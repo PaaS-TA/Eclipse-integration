@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "License�); you may not use this file except in compliance 
+ * Version 2.0 (the "License�); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -23,6 +23,7 @@ import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.ui.editor.ServerEditorSection;
 
@@ -45,7 +46,7 @@ public class DisablePublishSection extends ServerEditorSection {
 		for(Control child: children) {
 			if (child instanceof Section) {
 				Section section = (Section) child;
-				if (Messages.DisablePublishSection_TEXT_PUBLISHING.equals(section.getText())) {
+				if ("Publishing".equals(section.getText())) {
 					section.setEnabled(false);
 					section.setText(NLS.bind(Messages.DisablePublishSection_TEXT_PUBLISHING, Messages.DisablePublishSection_MANUAL));
 //					Control[] sectionChildren = section.getChildren();
@@ -72,6 +73,15 @@ public class DisablePublishSection extends ServerEditorSection {
 //							}
 //						}
 //					}
+				}
+				else if("Timeouts".equals(section.getText())){
+					section.setDescription("한글 디스크립션");
+					Composite composite = (Composite)section.getChildren()[0];
+					for(Control c : composite.getChildren()){
+						if(c instanceof Label){
+							((Label) c).setText("한글 레이블");
+						}
+					}
 				}
 			}
 		}

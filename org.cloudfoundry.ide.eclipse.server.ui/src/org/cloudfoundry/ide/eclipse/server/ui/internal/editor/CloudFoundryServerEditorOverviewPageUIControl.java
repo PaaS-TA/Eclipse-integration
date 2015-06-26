@@ -24,6 +24,10 @@ import java.beans.PropertyChangeEvent;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudServerUtil;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.forms.widgets.Hyperlink;
+import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.core.IServerType;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
 import org.eclipse.wst.server.ui.AbstractUIControl;
@@ -32,7 +36,21 @@ import org.eclipse.wst.server.ui.editor.ServerEditorOverviewPageModifier;
 public class CloudFoundryServerEditorOverviewPageUIControl extends ServerEditorOverviewPageModifier {
 
 	public void createControl(UI_LOCATION location, Composite parent) {
-		// Do nothing
+		
+		//overview general information part 한글화
+		((Section)parent.getParent()).setText("일반정보");
+		((Section)parent.getParent()).setDescription("디스크립션");
+		
+		for(Control control : parent.getChildren()){
+			if(control instanceof Label){
+				((Label) control).setText("한글 테스트 : ");
+			}
+			else if(control instanceof Hyperlink){
+				((Hyperlink) control).setText("한글 테스트(하이퍼링크) : ");
+			}
+		}
+		
+		
 	}
 
 	/**

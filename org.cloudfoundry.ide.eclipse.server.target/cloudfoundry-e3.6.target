@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde version="3.8"?>
+
+<target name="cloudfoundry-e3.6" sequenceNumber="9">
+<locations>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.aopalliance" version="1.0.0.v201105210816"/>
+<unit id="org.codehaus.jackson.core" version="1.6.0.v20101005-0925"/>
+<unit id="org.codehaus.jackson.mapper" version="1.6.0.v20101005-0925"/>
+<unit id="org.apache.commons.lang" version="2.4.0.v201005080502"/>
+<unit id="org.apache.commons.logging" version="1.1.1.v201101211721"/>
+<unit id="org.apache.commons.codec" version="1.3.0.v201101211617"/>
+<unit id="org.apache.commons.httpclient" version="3.1.0.v201012070820"/>
+<repository location="http://download.eclipse.org/tools/orbit/downloads/drops/R20120119162704/repository/"/>
+</location>
+<location includeAllPlatforms="false" includeConfigurePhase="false" includeMode="slicer" includeSource="true" type="InstallableUnit">
+<unit id="org.eclipse.emf.codegen.feature.group" version="2.6.0.v20100914-1218"/>
+<unit id="org.eclipse.emf.common.feature.group" version="2.6.0.v20100914-1218"/>
+<unit id="org.eclipse.emf.common.ui.feature.group" version="2.6.0.v20100914-1218"/>
+<unit id="org.eclipse.emf.ecore.feature.group" version="2.6.1.v20100914-1218"/>
+<unit id="org.eclipse.emf.ecore.edit.feature.group" version="2.6.0.v20100914-1218"/>
+<unit id="org.eclipse.emf.edit.feature.group" version="2.6.0.v20100914-1218"/>
+<unit id="org.eclipse.emf.edit.ui.feature.group" version="2.6.0.v20100914-1218"/>
+<unit id="org.eclipse.gef.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.jst.common.fproj.enablement.jdt.feature.group" version="3.2.2.v201008170019-377AB8s73533J5J759F"/>
+<unit id="org.eclipse.jst.enterprise_ui.feature.feature.group" version="3.2.3.v201011031800-7b7GHfIFSK2WBRT6E1mcyFXGPnSh"/>
+<unit id="org.eclipse.jst.server_ui.feature.feature.group" version="3.2.2.v20100908-7A5FEi9xFc7RCJMToAIOJC43A"/>
+<unit id="org.eclipse.jst.web_ui.feature.feature.group" version="3.2.3.v201101262333-7F77FJ_C25TkfyypjhqQuxNYsMrJ"/>
+<unit id="org.eclipse.rse.feature.group" version="3.2.2.R32x_v201102130925-7L78FA58SreKCHr_JG7UA8bra19p"/>
+<unit id="org.eclipse.wst.common.fproj.feature.group" version="3.2.3.v201101121727-377AC8s73543C6H4A5H"/>
+<unit id="org.eclipse.wst.common_ui.feature.feature.group" version="3.2.3.v201011031800-7C78FPlEdhO_oXWe4k_elbMgT1Lq"/>
+<unit id="org.eclipse.wst.server_ui.feature.feature.group" version="3.2.3.v20101104-7B4FBuAtJb1qEKLnCKHHHI347"/>
+<unit id="org.eclipse.wst.web_ui.feature.feature.group" version="3.2.3.v201102160541-7O7CFbWEMf84qYjGDyP3DNEwcgFU"/>
+<unit id="org.eclipse.wst.ws_ui.feature.feature.group" version="3.2.3.v201102160541-7I78FZIEtEoO2d7AsK6jSNqC-8jj"/>
+<unit id="org.eclipse.wst.xml_core.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.wst.xml_ui.feature.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xsd.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.xsd.edit.feature.group" version="0.0.0"/>
+<unit id="org.eclipse.sdk.ide" version="3.6.2.M20110210-1200"/>
+<unit id="org.eclipse.datatools.connectivity.feature.feature.group" version="1.8.2.v201010181125-7C7b8mEt1Zwkn9kfkUHHsoP_3to"/>
+<unit id="org.eclipse.datatools.enablement.feature.feature.group" version="1.8.2.v201010181125-7J8x7UBWwUN6z02z-fiI_w4x4uLf"/>
+<unit id="org.eclipse.datatools.enablement.jdbc.feature.feature.group" version="1.8.2.v201010181125-4-29oB56N5N7L6PAQ"/>
+<unit id="org.eclipse.datatools.enablement.mysql.feature.feature.group" version="1.8.2.v201010181125-546AkF78Y7R9PAX77"/>
+<unit id="org.eclipse.datatools.enablement.postgresql.feature.feature.group" version="1.8.2.v201010181125-542AkF77g7V9N9e77"/>
+<unit id="org.eclipse.datatools.enablement.jdt.feature.feature.group" version="1.8.2.v201010181125-2-07w31211518181A"/>
+<unit id="org.eclipse.datatools.modelbase.feature.feature.group" version="1.8.2.v201010181125-77078CcNBGKBZI_FcRd"/>
+<unit id="org.eclipse.datatools.sqldevtools.feature.feature.group" version="1.8.2.v201010181125-7N7y7JFDrhqbGIFUNhcFodMMD2J0"/>
+<unit id="org.eclipse.datatools.sqldevtools.parsers.feature.feature.group" version="1.8.2.v201010181125-622BgJ9CR9XFcEWLP"/>
+<unit id="org.eclipse.datatools.sqldevtools.sqlbuilder.feature.feature.group" version="1.8.2.v201010181125-79-4EVVFJoFwKcN-L_"/>
+<repository location="http://download.eclipse.org/releases/helios"/>
+</location>
+</locations>
+</target>

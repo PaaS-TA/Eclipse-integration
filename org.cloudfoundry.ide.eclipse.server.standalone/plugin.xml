@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<!--
+/*******************************************************************************
+ * Copyright (c) 2012, 2014 Pivotal Software, Inc. 
+ * 
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Apache License, 
+ * Version 2.0 (the "License”); you may not use this file except in compliance 
+ * with the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *  
+ *  Contributors:
+ *     Pivotal Software, Inc. - initial API and implementation
+ ********************************************************************************/
+-->
+<plugin>
+   
+    <extension point="org.eclipse.wst.common.project.facet.core.facets">
+
+	  <project-facet id="cloudfoundry.standalone.app"> 
+	    <label>Cloud Foundry Standalone Application</label>
+	    <description>Standalone applications can be deployed to a Cloud Foundry server instance.</description>
+	  </project-facet>
+	
+	  <project-facet-version facet="cloudfoundry.standalone.app" version="1.0">
+	    <action type="INSTALL">
+	          <delegate class="org.cloudfoundry.ide.eclipse.server.standalone.internal.application.StandaloneFacetHandler$CFFacetInstallDelegate"/>
+	    </action>
+	    <action type="UNINSTALL">
+	       <delegate class="org.cloudfoundry.ide.eclipse.server.standalone.internal.application.StandaloneFacetHandler$CFFacetUninstallDelegate"/>
+	    </action>
+	  </project-facet-version>   
+   </extension>
+   
+      <extension
+         point="org.eclipse.wst.server.core.moduleArtifactAdapters">
+      <moduleArtifactAdapter
+            class="org.cloudfoundry.ide.eclipse.server.standalone.internal.application.StandaloneArtifactAdapter"
+            id="org.cloudfoundry.ide.eclipse.server.core.StandaloneArtifactAdapter"
+            priority="1">
+         <enablement>
+            <with variable="selection">
+               <adapt type="org.eclipse.core.resources.IProject">
+               </adapt>
+            </with>
+         </enablement>
+      </moduleArtifactAdapter>
+   </extension>
+   
+    <extension
+         point="org.eclipse.wst.server.core.moduleFactories">
+      <moduleFactory
+            class="org.cloudfoundry.ide.eclipse.server.standalone.internal.application.StandAloneModuleFactory"
+            id="org.cloudfoundry.ide.eclipse.server.core.StandAloneModuleFactory"
+            order="1"
+            projects="true">
+         <moduleType
+         	types="cloudfoundry.standalone.app"
+         	versions="1.0"/>
+      </moduleFactory>
+   </extension>
+   
+    <extension
+          point="org.cloudfoundry.ide.eclipse.server.core.application">
+       <applicationDelegate
+             class="org.cloudfoundry.ide.eclipse.server.standalone.internal.application.StandaloneApplicationDelegate"
+             priority="Medium"
+             providerID="org.cloudfoundry.ide.eclipse.server.application.standalone">
+          <moduleID
+                id="cloudfoundry.standalone.app">
+          </moduleID>
+       </applicationDelegate>
+    </extension>
+    
+    <extension
+         point="org.eclipse.wst.server.core.moduleTypes">
+      <moduleType
+            id="cloudfoundry.standalone.app"
+            name="Cloud Foundry Standalone Application">
+      </moduleType>
+   </extension>
+    
+    <extension point="org.eclipse.ui.menus">
+    <menuContribution
+          allPopups="true"
+          class="org.cloudfoundry.ide.eclipse.server.standalone.internal.ui.ProjectExplorerMenuFactory"
+          locationURI="popup:org.eclipse.ui.projectConfigure?endof=additions">
+    </menuContribution>
+	</extension>
+	
+    <extension
+          point="org.cloudfoundry.ide.eclipse.server.ui.applicationWizard">
+       <applicationWizardDelegate
+             class="org.cloudfoundry.ide.eclipse.server.standalone.internal.ui.StandaloneApplicationWizardDelegate"
+             providerID="org.cloudfoundry.ide.eclipse.server.application.standalone">
+       </applicationWizardDelegate>
+    </extension>
+
+</plugin>

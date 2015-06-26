@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/*******************************************************************************
+ * Copyright (c) 2012, 2015 Pivotal Software, Inc.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     Pivotal Software, Inc. - initial API and implementation
+ *******************************************************************************/
+-->
+<site>
+   <feature url="features/org.cloudfoundry.ide.eclipse.server_0.0.0.jar" id="org.cloudfoundry.ide.eclipse.server" version="0.0.0">
+      <category name="Core / Cloud Foundry Integration"/>
+   </feature>
+   <feature url="features/org.cloudfoundry.ide.eclipse.server.sdk_1.8.1.qualifier.jar" id="org.cloudfoundry.ide.eclipse.server.sdk" version="0.0.0">
+      <category name="Resources / Cloud Foundry Integration"/>
+   </feature>
+   <category-def name="Core / Cloud Foundry Integration" label="Core / Cloud Foundry Integration"/>
+   <category-def name="Resources / Cloud Foundry Integration" label="Resources / Cloud Foundry Integration"/>
+</site>

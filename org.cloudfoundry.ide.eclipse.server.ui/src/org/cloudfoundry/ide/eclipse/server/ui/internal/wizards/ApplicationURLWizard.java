@@ -50,7 +50,8 @@ public class ApplicationURLWizard extends Wizard {
 
 	private static final String title = Messages.ApplicationURLWizard_TITLE_MOD_APP_URL;
 
-	public ApplicationURLWizard(CloudFoundryServer cloudServer, String initialUrl) {
+	public ApplicationURLWizard(CloudFoundryServer cloudServer,
+			String initialUrl) {
 		this.cloudServer = cloudServer;
 		this.initialUrl = initialUrl;
 		setWindowTitle(title);
@@ -66,9 +67,11 @@ public class ApplicationURLWizard extends Wizard {
 	public void addPages() {
 		String serverTypeId = cloudServer.getServer().getServerType().getId();
 
-		ImageDescriptor imageDescriptor = CloudFoundryImages.getWizardBanner(serverTypeId);
+		ImageDescriptor imageDescriptor = CloudFoundryImages
+				.getWizardBanner(serverTypeId);
 		// Use the cached version if possible.
-		ApplicationUrlLookupService urlLookup = ApplicationUrlLookupService.getCurrentLookup(cloudServer);
+		ApplicationUrlLookupService urlLookup = ApplicationUrlLookupService
+				.getCurrentLookup(cloudServer);
 		urlPage = createPage(imageDescriptor, urlLookup);
 		urlPage.setWizard(this);
 		addPage(urlPage);
@@ -78,7 +81,9 @@ public class ApplicationURLWizard extends Wizard {
 		return editedUrl;
 	}
 
-	protected ApplicationURLWizardPage createPage(ImageDescriptor imageDescriptor, ApplicationUrlLookupService urlLookup) {
+	protected ApplicationURLWizardPage createPage(
+			ImageDescriptor imageDescriptor,
+			ApplicationUrlLookupService urlLookup) {
 		CloudApplicationUrlPart urlPart = new CloudApplicationUrlPart(urlLookup);
 		return new ApplicationURLWizardPage(imageDescriptor, urlLookup, urlPart);
 	}
@@ -87,9 +92,11 @@ public class ApplicationURLWizard extends Wizard {
 
 		private final CloudApplicationUrlPart urlPart;
 
-		protected ApplicationURLWizardPage(ImageDescriptor titleImage, ApplicationUrlLookupService urlLookup,
+		protected ApplicationURLWizardPage(ImageDescriptor titleImage,
+				ApplicationUrlLookupService urlLookup,
 				CloudApplicationUrlPart urlPart) {
-			super(Messages.ApplicationURLWizard_TEXT_PAGE, title, titleImage, urlLookup);
+			super(Messages.ApplicationURLWizard_TEXT_PAGE, title, titleImage,
+					urlLookup);
 			setDescription(Messages.ApplicationURLWizard_TEXT_MOD_APP_URL);
 			this.urlPart = urlPart;
 		}
@@ -128,7 +135,8 @@ public class ApplicationURLWizard extends Wizard {
 
 		public void handleChange(PartChangeEvent event) {
 			if (event.getSource() == CloudUIEvent.APPLICATION_URL_CHANGED) {
-				editedUrl = event.getData() instanceof String ? (String) event.getData() : null;
+				editedUrl = event.getData() instanceof String ? (String) event
+						.getData() : null;
 			}
 
 			super.handleChange(event);

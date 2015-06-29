@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -23,9 +23,11 @@ import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.CloudFoundryServerUiPlugin;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.CloudServerSpacesDelegate;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.core.runtime.preferences.InstanceScope;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
 import org.eclipse.wst.server.core.IServerWorkingCopy;
+import org.osgi.service.prefs.Preferences;
 
 /**
  * Prompts for the password if an operation requires authentication.
@@ -49,7 +51,13 @@ public class CloudFoundryCredentialsWizard extends Wizard {
 		this.server = (CloudFoundryServer) serverWC.loadAdapter(CloudFoundryServer.class, null);
 		setWindowTitle(server.getServer().getName());
 		setNeedsProgressMonitor(true);
-
+		
+		Preferences preferences = InstanceScope.INSTANCE
+				  .getNode("org.eclipse");
+		
+		
+		
+		
 		// Will dynamically add the spaces page based on the URL selected. For
 		// now, force the Next and Previous buttons to appear. Note that next
 		// and previous
@@ -60,6 +68,8 @@ public class CloudFoundryCredentialsWizard extends Wizard {
 		// add the spaces wizard page based on URL selection. Therefore, only
 		// one page is
 		// registered with the wizard: the credential page
+
+		
 		setForcePreviousAndNextButtons(true);
 	}
 

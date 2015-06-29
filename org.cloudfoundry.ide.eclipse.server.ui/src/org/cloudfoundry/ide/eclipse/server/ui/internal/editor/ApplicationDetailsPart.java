@@ -113,6 +113,7 @@ import org.eclipse.ui.progress.UIJob;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 import org.eclipse.wst.server.ui.internal.ImageResource;
+import org.eclipse.wst.server.ui.internal.wizard.page.ModifyModulesComposite;
 
 /**
  * @author Terry Denney
@@ -127,7 +128,7 @@ public class ApplicationDetailsPart extends AbstractFormPart implements IDetails
 	private boolean canUpdate;
 
 	private final CloudFoundryServer cloudServer;
-
+	
 	private final CloudFoundryApplicationsEditorPage editorPage;
 
 	private Section generalSection;
@@ -527,7 +528,7 @@ public class ApplicationDetailsPart extends AbstractFormPart implements IDetails
 		module = (IModule) sel.getFirstElement();
 
 		refreshUI();
-		editorPage.refresh(RefreshArea.DETAIL);
+		editorPage.refresh(RefreshArea.DETAIL);  
 	}
 
 	private void adaptControl(Control control) {

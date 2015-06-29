@@ -143,6 +143,7 @@ public abstract class EditorAction extends Action {
 								if (dialog.open() == Dialog.OK) {
 									schedule();
 								}
+								
 							}
 						});
 					}

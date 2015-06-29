@@ -900,10 +900,32 @@ public class Messages extends NLS {
 	public static String MANAGE_SERVICES_TO_APPLICATIONS_FINISH_ERROR_TITLE;
 
 	public static String MANAGE_SERVICES_TO_APPLICATIONS_FINISH_ERROR_DESCRIPTION;
-	
+
 	public static String UPDATE_PROJECT_MAPPING;
 
 	public static String CloudFoundryServiceWizardPage_GETTING_AVAILABLE_SERVICES;
+
+	//새로 추가된 리소스 2015.06.29 added by RS 
+	public static String CloudFoundryServerEditorPage_OVERVIEW;
+	public static String CloudFoundryServerEditorPage_SERVER_NAME;
+	public static String CloudFoundryServerEditorPage_HOST_NAME;
+	public static String CloudFoundryServerEditorPage_RUNTIME_ENVIRONMENT;
+	public static String CloudFoundryServerEditorPage_GENERAL_DESCRIPTION;
+	public static String CloudFoundryServerEditorPage_GENERAL_INFORMATION;
+
+	public static String CloudFoundryServerEditorPage_SERVER_NAME_ENG;
+	public static String CloudFoundryServerEditorPage_HOST_NAME_ENG;
+	public static String CloudFoundryServerEditorPage_RUNTIME_ENVIRONMENT_ENG;
+
+	public static String DisablePublishSection_TEXT_PUBLISHING_ENG;
+
+	public static String DisablePublishSection_TEXT_TIMEOUTS;
+	public static String DisablePublishSection_TEXT_TIMEOUTS_ENG;
+	public static String DisablePublishSection_TEXT_TIMEOUTS_START_ENG;
+	public static String DisablePublishSection_TEXT_TIMEOUTS_STOP_ENG;
+	public static String DisablePublishSection_TEXT_TIMEOUTS_START;
+	public static String DisablePublishSection_TEXT_TIMEOUTS_STOP;
+	public static String DisablePublishSection_TEXT_TIMEOUTS_DESCRIPTION;
 
 	private static final String BUNDLE_NAME = CloudFoundryServerUiPlugin.PLUGIN_ID + ".internal.Messages"; //$NON-NLS-1$
 

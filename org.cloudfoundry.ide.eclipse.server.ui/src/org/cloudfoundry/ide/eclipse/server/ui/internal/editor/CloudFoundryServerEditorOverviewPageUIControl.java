@@ -23,9 +23,11 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.editor;
 import java.beans.PropertyChangeEvent;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudServerUtil;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.ui.forms.widgets.Form;
 import org.eclipse.ui.forms.widgets.Hyperlink;
 import org.eclipse.ui.forms.widgets.Section;
 import org.eclipse.wst.server.core.IServerType;
@@ -36,21 +38,39 @@ import org.eclipse.wst.server.ui.editor.ServerEditorOverviewPageModifier;
 public class CloudFoundryServerEditorOverviewPageUIControl extends ServerEditorOverviewPageModifier {
 
 	public void createControl(UI_LOCATION location, Composite parent) {
-		
-		//overview general information part «—±€»≠
-		((Section)parent.getParent()).setText("¿œπ›¡§∫∏");
-		((Section)parent.getParent()).setDescription("µΩ∫≈©∏≥º«");
-		
-		for(Control control : parent.getChildren()){
-			if(control instanceof Label){
-				((Label) control).setText("«—±€ ≈◊Ω∫∆Æ : ");
-			}
-			else if(control instanceof Hyperlink){
-				((Hyperlink) control).setText("«—±€ ≈◊Ω∫∆Æ(«œ¿Ã∆€∏µ≈©) : ");
+
+		//Î†àÏù¥Î∏î ÌÖçÏä§Ìä∏Î•º ÍµêÏ≤¥.
+		for(Control child : parent.getChildren()){
+			if(child instanceof Label){
+				Label label = (Label) child;
+				if(label.getText().equals(Messages.CloudFoundryServerEditorPage_SERVER_NAME_ENG)){
+					label.setText(Messages.CloudFoundryServerEditorPage_SERVER_NAME);
+				} else if(label.getText().equals(Messages.CloudFoundryServerEditorPage_HOST_NAME_ENG)){
+					label.setText(Messages.CloudFoundryServerEditorPage_HOST_NAME);
+				}
+			} else if(child instanceof Hyperlink){
+				Hyperlink link = (Hyperlink)child;
+				if(link.getText().equals(Messages.CloudFoundryServerEditorPage_RUNTIME_ENVIRONMENT_ENG)){
+					link.setText(Messages.CloudFoundryServerEditorPage_RUNTIME_ENVIRONMENT);
+				}
 			}
 		}
-		
-		
+
+		//ÏÑπÏÖò ÌÖçÏä§Ìä∏Î•º ÍµêÏ≤¥
+		Control section = parent.getParent();
+		if(section instanceof Section){
+			((Section) section).setDescription(Messages.CloudFoundryServerEditorPage_GENERAL_DESCRIPTION);
+			((Section) section).setText(Messages.CloudFoundryServerEditorPage_GENERAL_INFORMATION);
+		}
+
+		Control leftColumnComp = section.getParent();
+		Control columnComp = leftColumnComp.getParent();
+		Control formBody = columnComp.getParent();
+		Control form = formBody.getParent();
+		if(form instanceof Form){
+			((Form) form).setText(Messages.CloudFoundryServerEditorPage_OVERVIEW);
+		}
+
 	}
 
 	/**
@@ -76,13 +96,13 @@ public class CloudFoundryServerEditorOverviewPageUIControl extends ServerEditorO
 				// Enable the host name field.
 				if (controlListener != null) {
 					controlMap.put(PROP_HOSTNAME, new UIControlEntry(true,
-									null));
+							null));
 					fireUIControlChangedEvent();
 				}
 			}
 		}
 	}
-	
+
 	private boolean isSupportedServerType(IServerType serverType) {
 		if (serverType == null) {
 			return false;

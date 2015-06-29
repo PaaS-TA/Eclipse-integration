@@ -32,6 +32,8 @@ import org.eclipse.wst.server.ui.editor.ServerEditorSection;
 /**
  * This class exists simply to disable the publish section in the server editor. It doesn't create any widgets.
  * 
+ * 퍼블리싱 섹션을 비활성화 시키고 타임아웃 섹션의 리소스를 한글로 교체
+ * 
  * @author Terry Denney
  */
 public class DisablePublishSection extends ServerEditorSection {
@@ -46,7 +48,7 @@ public class DisablePublishSection extends ServerEditorSection {
 		for(Control child: children) {
 			if (child instanceof Section) {
 				Section section = (Section) child;
-				if ("Publishing".equals(section.getText())) {
+				if (Messages.DisablePublishSection_TEXT_PUBLISHING_ENG.equals(section.getText())) {
 					section.setEnabled(false);
 					section.setText(NLS.bind(Messages.DisablePublishSection_TEXT_PUBLISHING, Messages.DisablePublishSection_MANUAL));
 //					Control[] sectionChildren = section.getChildren();
@@ -73,13 +75,21 @@ public class DisablePublishSection extends ServerEditorSection {
 //							}
 //						}
 //					}
-				}
-				else if("Timeouts".equals(section.getText())){
-					section.setDescription("한글 디스크립션");
-					Composite composite = (Composite)section.getChildren()[0];
-					for(Control c : composite.getChildren()){
-						if(c instanceof Label){
-							((Label) c).setText("한글 레이블");
+				} else if(Messages.DisablePublishSection_TEXT_TIMEOUTS_ENG.equals(section.getText())){
+					section.setText(Messages.DisablePublishSection_TEXT_TIMEOUTS);
+					section.setDescription(Messages.DisablePublishSection_TEXT_TIMEOUTS_DESCRIPTION);
+					
+					for(Control composite : section.getChildren()){
+						if(composite instanceof Composite){
+							for(Control control : ((Composite) composite).getChildren()){
+								if(control instanceof Label){
+									Label label = (Label)control;
+									if(Messages.DisablePublishSection_TEXT_TIMEOUTS_START_ENG.equals(label.getText()))
+										label.setText(Messages.DisablePublishSection_TEXT_TIMEOUTS_START);
+									else if(Messages.DisablePublishSection_TEXT_TIMEOUTS_STOP_ENG.equals(label.getText()))
+										label.setText(Messages.DisablePublishSection_TEXT_TIMEOUTS_STOP);
+								}
+							}
 						}
 					}
 				}

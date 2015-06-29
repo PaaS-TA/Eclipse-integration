@@ -42,7 +42,9 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.IMessageProvider;
 import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.TableViewer;
+import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
 import org.eclipse.ui.forms.ManagedForm;
 import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
@@ -85,6 +87,16 @@ public class CloudFoundryApplicationsEditorPage extends ServerEditorPart {
 
 	@Override
 	public void createPartControl(Composite parent) {
+		
+		// 탭의 Overview 텍스트를 교체
+		Control tabFolder = parent.getParent();
+		if(tabFolder instanceof CTabFolder){
+			CTabFolder tab = (CTabFolder) tabFolder;
+			if(tab.getItemCount() > 0){
+				tab.getItem(0).setText(Messages.CloudFoundryServerEditorPage_OVERVIEW);
+			}
+		}
+		
 
 		mform = new ManagedForm(parent);
 		FormToolkit toolkit = getFormToolkit(parent.getDisplay());

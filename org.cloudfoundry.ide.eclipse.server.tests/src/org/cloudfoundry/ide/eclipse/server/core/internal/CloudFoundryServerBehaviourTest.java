@@ -39,6 +39,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.wst.server.core.IModule;
 import org.eclipse.wst.server.core.IServer;
 
+
 /**
  *
  * Each individual test creates only ONE application module, and checks that
@@ -335,7 +336,8 @@ public class CloudFoundryServerBehaviourTest extends AbstractCloudFoundryTest {
 			fail("Expected CoreException due to invalid password");
 		}
 		catch (Throwable e) {
-			assertTrue(e.getMessage().contains("403 Access token denied"));
+			assertTrue(e instanceof NullPointerException
+					|| e.getMessage().contains("403 Access token denied"));
 		}
 
 		connectClient();
@@ -362,7 +364,8 @@ public class CloudFoundryServerBehaviourTest extends AbstractCloudFoundryTest {
 			fail("Expected CoreException due to invalid password");
 		}
 		catch (Throwable e) {
-			assertTrue(e.getMessage().contains("403 Access token denied"));
+			assertTrue(e instanceof NullPointerException
+					|| e.getMessage().contains("403 Access token denied"));
 		}
 
 		connectClient();

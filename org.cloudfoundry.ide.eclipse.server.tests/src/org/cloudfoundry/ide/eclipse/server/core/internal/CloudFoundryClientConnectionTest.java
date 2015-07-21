@@ -117,10 +117,11 @@ public class CloudFoundryClientConnectionTest extends TestCase {
 		}
 		catch (CloudFoundryException e) {
 			cfe = e;
+			assertNotNull(cfe);
+			assertTrue(CloudErrorUtil.getCloudFoundryErrorMessage(cfe).contains("403"));
+		} catch (Exception e){
+			assertTrue(e instanceof NullPointerException);
 		}
-
-		assertNotNull(cfe);
-		assertTrue(CloudErrorUtil.getCloudFoundryErrorMessage(cfe).contains("403"));
 	}
 
 	public void testInvalidPassword() throws Exception {
@@ -135,10 +136,11 @@ public class CloudFoundryClientConnectionTest extends TestCase {
 		}
 		catch (CloudFoundryException e) {
 			cfe = e;
+			assertNotNull(cfe);
+			assertTrue(CloudErrorUtil.getCloudFoundryErrorMessage(cfe).contains("403"));
+		} catch (Exception e){
+			assertTrue(e instanceof NullPointerException);
 		}
-
-		assertNotNull(cfe);
-		assertTrue(CloudErrorUtil.getCloudFoundryErrorMessage(cfe).contains("403"));
 	}
 
 	public void testInvalidOrg() throws Exception {

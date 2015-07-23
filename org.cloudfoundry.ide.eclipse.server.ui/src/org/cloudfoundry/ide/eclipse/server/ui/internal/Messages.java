@@ -926,6 +926,12 @@ public class Messages extends NLS {
 	public static String DisablePublishSection_TEXT_TIMEOUTS_START;
 	public static String DisablePublishSection_TEXT_TIMEOUTS_STOP;
 	public static String DisablePublishSection_TEXT_TIMEOUTS_DESCRIPTION;
+	
+	//새로 추가된 리소스 2015.07.22 added by rs
+	public static String COMMONTXT_VENDOR;
+	public static String COMMONTXT_PROVIDER;
+	public static String COMMONTXT_VERSION;
+	public static String COMMONTXT_TUNNEL;
 
 	private static final String BUNDLE_NAME = CloudFoundryServerUiPlugin.PLUGIN_ID + ".internal.Messages"; //$NON-NLS-1$
 

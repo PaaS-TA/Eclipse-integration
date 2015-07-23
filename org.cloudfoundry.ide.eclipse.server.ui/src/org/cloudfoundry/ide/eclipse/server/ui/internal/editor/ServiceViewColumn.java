@@ -19,16 +19,29 @@
  ********************************************************************************/
 package org.cloudfoundry.ide.eclipse.server.ui.internal.editor;
 
-public enum ServiceViewColumn {
-	Name(150), Version(100), Vendor(100), Tunnel(80), Plan(50), Provider(100);
-	private int width;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 
-	private ServiceViewColumn(int width) {
+public enum ServiceViewColumn {
+	Name(150, Messages.COMMONTXT_NAME)
+	, Version(100, Messages.COMMONTXT_VERSION)
+	, Vendor(100, Messages.COMMONTXT_VENDOR)
+	, Tunnel(80, Messages.COMMONTXT_TUNNEL)
+	, Plan(50, Messages.CloudFoundryServicePlanWizardPage_LABEL_PLAN)
+	, Provider(100, Messages.COMMONTXT_PROVIDER);
+	
+	private int width;
+	private String text;
+
+	private ServiceViewColumn(int width, String text) {
 		this.width = width;
+		this.text = text;
 	}
 
 	public int getWidth() {
 		return width;
+	}
+	public String getText(){
+		return text;
 	}
 
 	public static ServiceViewColumnDescriptor getServiceViewColumnDescriptor() {

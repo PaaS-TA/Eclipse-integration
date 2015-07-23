@@ -613,7 +613,12 @@ public class ApplicationMasterPart extends SectionPart {
 
 		IModule module = (IModule) selection.getFirstElement();
 		if (module != null) {
-			manager.add(new RemoveModuleAction(getSection().getShell(), editorPage.getServer().getOriginal(), module));
+			manager.add(new RemoveModuleAction(getSection().getShell(), editorPage.getServer().getOriginal(), module){
+				{
+					setText(Messages.COMMONTXT_REMOVE);
+					setActionDefinitionId(null);
+				}
+			});
 			IProject project = module.getProject();
 			if (project != null && project.isAccessible()) {
 				manager.add(new UnmapProjectEditorAction(editorPage, module));

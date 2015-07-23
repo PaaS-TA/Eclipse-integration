@@ -84,7 +84,7 @@ public class CloudFoundryImages {
 
 	public static final ImageDescriptor DEBUG = create(OBJ, "debug_exc.gif"); //$NON-NLS-1$
 
-	public static final ImageDescriptor DEFAULT_WIZARD_BANNER = create(OBJ, "default_wizard_banner.png"); //$NON-NLS-1$
+	public static final ImageDescriptor DEFAULT_WIZARD_BANNER = create(OBJ, "default_wizard_banner_white.png"); //$NON-NLS-1$
 
 	private static ImageRegistry imageRegistry;
 

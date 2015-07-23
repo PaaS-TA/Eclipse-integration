@@ -69,7 +69,7 @@
        point="org.eclipse.ui.menus">
     	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView?after=org.eclipse.wst.server.ui.internal.cnf.controlServerSectionStart">
      	   <command
-     	       label="Connect"
+     	       label="연결"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.connectcommand"
                icon="icons/full/obj16/connect.png">
   	         <visibleWhen
@@ -80,7 +80,7 @@
  	   	</menuContribution>
     	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView?after=org.eclipse.wst.server.ui.internal.cnf.controlServerSectionStart">
      	   <command
-     	       label="Disconnect"
+     	       label="연결 해제"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.disconnectcommand"
                icon="icons/full/obj16/disconnect.png">
   	         <visibleWhen
@@ -91,7 +91,7 @@
  	   	</menuContribution>
     	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Clone Server..."
+     	       label="서버 복제..."
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.cloneservercommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -104,7 +104,7 @@
  	   	</menuContribution>
     	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Update Password..."
+     	       label="비밀번호 변경"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.updatepasswordcommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -117,7 +117,7 @@
  	   	</menuContribution>
      	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Show Recent Logs"
+     	       label="최근 로그 보기"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.internal.actions.showconsoleviewercommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -136,7 +136,7 @@
  	   	</menuContribution>
     	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Update and Restart"
+     	       label="갱신 및 재시작"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.internal.actions.updaterestartmodulecommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -155,7 +155,7 @@
  	   	</menuContribution>
  	   	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Push"
+     	       label="배포"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.internal.actions.pushcommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -174,7 +174,7 @@
  	   	</menuContribution>
  	   	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Map to Project..."
+     	       label="프로젝트 매핑..."
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.internal.actions.remaptoprojectcommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -193,7 +193,7 @@
  	   	</menuContribution>
  	   	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Unmap Project"
+     	       label="프로젝트 매핑 해제"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.internal.actions.unmapprojectcommand">
   	         <visibleWhen
   	               checkEnabled="false">
@@ -212,7 +212,7 @@
  	   	</menuContribution>
     	<menuContribution locationURI="popup:org.eclipse.wst.server.ui.ServersView">
      	   <command
-     	       label="Open Home Page"
+     	       label="홈페이지 열기"
      	       commandId="org.cloudfoundry.ide.eclipse.server.ui.internal.actions.openhomepagecommand">
   	         <visibleWhen
   	               checkEnabled="false">

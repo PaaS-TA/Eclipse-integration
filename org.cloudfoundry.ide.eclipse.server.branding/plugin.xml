@@ -121,7 +121,7 @@
            remoteSystemTypeId="org.cloudfoundry.cloudfoundryserver"
            serverDisplayName="Open Platform Cloud Foundry(브랜딩 타입)"
            serverTypeId="org.cloudfoundry.appcloudserver.10"
-           wizardBanner="icons/wizban/wizban_cloudfoundry.png">
+           wizardBanner="icons/wizban/wizban_cloudfoundry_white.png">
         <defaultUrl
               name="Open Platform Cloud Foundry Hosted Developer Edition"
               signupURL="https://console.run.pivotal.io/register"

@@ -73,7 +73,7 @@ public class ServiceViewerConfigurator {
 			columnProperties[columnIndex] = column.name();
 			TableColumn tableColumn = new TableColumn(table, SWT.NONE, columnIndex++);
 			tableColumn.setData(column);
-			tableColumn.setText(column.name());
+			tableColumn.setText(column.getText());
 			tableColumn.setWidth(column.getWidth());
 			tableColumn.addSelectionListener(new ColumnSortListener(tableViewer));
 

@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -19,18 +19,30 @@
  ********************************************************************************/
 package org.cloudfoundry.ide.eclipse.server.ui.internal.editor;
 
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
+
 
 public enum ApplicationInstanceServiceColumn {
 
-	Name(125), Service(100), Vendor(100), Plan(75), Version(75);
+	Name(125, Messages.COMMONTXT_NAME)
+	, Service(100, Messages.COMMONTXT_SERVICES)
+	, Vendor(100, Messages.COMMONTXT_VENDOR)
+	, Plan(75, Messages.CloudFoundryServicePlanWizardPage_LABEL_PLAN)
+	, Version(75, Messages.COMMONTXT_VERSION);
 
 	private int width;
+	private String text;
 
-	private ApplicationInstanceServiceColumn(int width) {
+	private ApplicationInstanceServiceColumn(int width, String text) {
 		this.width = width;
+		this.text = text;
 	}
 
 	public int getWidth() {
 		return width;
+	}
+	
+	public String getText(){
+		return text;
 	}
 }

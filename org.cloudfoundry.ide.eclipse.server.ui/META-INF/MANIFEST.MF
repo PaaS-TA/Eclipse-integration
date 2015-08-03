@@ -33,3 +33,4 @@ Export-Package: org.cloudfoundry.ide.eclipse.server.ui,
  org.cloudfoundry.ide.eclipse.server.ui.internal.console,
  org.cloudfoundry.ide.eclipse.server.ui.internal.editor,
  org.cloudfoundry.ide.eclipse.server.ui.internal.wizards
+Bundle-Localization: OSGI-INF/l10n/bundle

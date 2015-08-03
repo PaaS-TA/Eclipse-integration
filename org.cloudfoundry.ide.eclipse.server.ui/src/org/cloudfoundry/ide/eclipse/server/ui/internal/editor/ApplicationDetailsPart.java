@@ -1073,7 +1073,7 @@ public class ApplicationDetailsPart extends AbstractFormPart implements IDetails
 			int i = 0;
 			for (ApplicationInstanceServiceColumn descriptor : columnDescriptor) {
 				if (i < length) {
-					columnNames[i] = descriptor.name();
+					columnNames[i] = descriptor.getText();
 					columnWidths[i] = descriptor.getWidth();
 					i++;
 				}

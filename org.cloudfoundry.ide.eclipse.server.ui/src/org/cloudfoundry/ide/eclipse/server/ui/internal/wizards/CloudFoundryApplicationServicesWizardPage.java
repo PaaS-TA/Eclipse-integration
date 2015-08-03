@@ -44,6 +44,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
+import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.action.ToolBarManager;
 import org.eclipse.jface.layout.GridDataFactory;
 import org.eclipse.jface.layout.GridLayoutFactory;
@@ -126,14 +128,15 @@ public class CloudFoundryApplicationServicesWizardPage extends PartsWizardPage {
 		Label label = new Label(toolBarArea, SWT.NONE);
 		GridDataFactory.fillDefaults().grab(false, false).align(SWT.BEGINNING, SWT.CENTER).applyTo(label);
 		label.setText(Messages.CloudFoundryApplicationServicesWizardPage_LABEL_SELECT_SERVICE);
-
+		
 		Table table = new Table(tableArea, SWT.BORDER | SWT.SINGLE | SWT.CHECK);
 
 		GridDataFactory.fillDefaults().grab(true, true).applyTo(table);
 
-		ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT);
+		ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT | SWT.RIGHT);
 		ToolBar bar = toolBarManager.createControl(toolBarArea);
 		GridDataFactory.fillDefaults().align(SWT.END, SWT.BEGINNING).grab(true, false).applyTo(bar);
+		
 
 		servicesViewer = new CheckboxTableViewer(table);
 
@@ -215,7 +218,12 @@ public class CloudFoundryApplicationServicesWizardPage extends PartsWizardPage {
 				return Messages.CloudFoundryApplicationServicesWizardPage_TEXT_TOOLTIP;
 			}
 		};
-		toolBarManager.add(addServiceAction);
+		
+		ActionContributionItem item = new ActionContributionItem(addServiceAction);
+		item.setMode(ActionContributionItem.MODE_FORCE_TEXT);
+//		toolBarManager.add(addServiceAction);
+		toolBarManager.add(item);
+
 
 		toolBarManager.update(true);
 

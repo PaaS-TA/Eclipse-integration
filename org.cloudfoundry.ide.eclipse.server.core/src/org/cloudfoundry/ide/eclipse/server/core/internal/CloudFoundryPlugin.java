@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -99,16 +99,19 @@ public class CloudFoundryPlugin extends Plugin {
 				Object object = configurationElement.createExecutableExtension(ELEMENT_CLASS);
 				if (!(object instanceof CloudFoundryCallback)) {
 					getDefault().getLog().log(
-							new Status(IStatus.ERROR, PLUGIN_ID, "Could not load " //$NON-NLS-1$
+/*							new Status(IStatus.ERROR, PLUGIN_ID, "Could not load " //$NON-NLS-1$
 									+ object.getClass().getCanonicalName() + " must implement " //$NON-NLS-1$
 									+ CloudFoundryCallback.class.getCanonicalName()));
+*/					
+							//2015.07.31 added by ohdoking 
+							new Status(IStatus.ERROR, PLUGIN_ID,NLS.bind(Messages.CloudFoundryPlugin_ERROR_LOAD_CLASS, object.getClass().getCanonicalName(),CloudFoundryCallback.class.getCanonicalName())));
 					return null;
 				}
 
 				return (CloudFoundryCallback) object;
 			}
 			catch (CoreException e) {
-				getDefault().getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, "Could not load callback extension", e)); //$NON-NLS-1$
+				getDefault().getLog().log(new Status(IStatus.ERROR, PLUGIN_ID, Messages.CloudFoundryPlugin_ERROR_LOAD_CALLBACK_EXTENTION, e)); //$NON-NLS-1$
 			}
 			return null;
 		}
@@ -263,7 +266,9 @@ public class CloudFoundryPlugin extends Plugin {
 				// "  Could not load .appStateTracker: " +
 				// curConfigElement.getAttribute("id"), t);
 				// }
-				CloudFoundryPlugin.logError(("Internal Error: Failed to load application start tracker due to - " + t.getMessage()), t); //$NON-NLS-1$
+//				CloudFoundryPlugin.logError(("Internal Error: Failed to load application start tracker due to - " + t.getMessage()), t); //$NON-NLS-1$
+				//2015.07.31 added by ohdoking 
+				CloudFoundryPlugin.logError((NLS.bind(Messages.CloudFoundryPlugin_ERROR_LOAD_APPLICATION_START_TRACKER, t.getMessage())), t); //$NON-NLS-1$
 			}
 			return tracker;
 		}

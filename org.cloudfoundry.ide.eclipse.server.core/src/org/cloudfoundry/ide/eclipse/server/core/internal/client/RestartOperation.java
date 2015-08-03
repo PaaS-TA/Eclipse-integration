@@ -76,8 +76,11 @@ public class RestartOperation extends ApplicationOperation {
 			if (deploymentName == null) {
 				server.setModuleState(getModules(), IServer.STATE_STOPPED);
 
-				throw CloudErrorUtil
+				/*throw CloudErrorUtil
 						.toCoreException("Unable to start application. Missing application deployment name in application deployment information."); //$NON-NLS-1$
+*/				//2015.07.31 added by ohdoking 
+				throw CloudErrorUtil
+				.toCoreException(Messages.RestartOperation_ERROR_START_APPLICATION); 
 			}
 
 			SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
@@ -138,9 +141,12 @@ public class RestartOperation extends ApplicationOperation {
 						try {
 							if (!RestartOperation.this.getBehaviour().waitForStart(client, deploymentName, progress)) {
 								server.setModuleState(getModules(), IServer.STATE_STOPPED);
-
+/*
 								throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
 										"Starting of " + cloudModule.getDeployedApplicationName() + " timed out")); //$NON-NLS-1$ //$NON-NLS-2$
+										//2015.07.31 added by ohdoking 
+*/								throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
+									NLS.bind(Messages.RestartOperation_ERROR_APPLCATION_TIMEOUT, cloudModule.getDeployedApplicationName()))); 
 							}
 						}
 						catch (InterruptedException e) {

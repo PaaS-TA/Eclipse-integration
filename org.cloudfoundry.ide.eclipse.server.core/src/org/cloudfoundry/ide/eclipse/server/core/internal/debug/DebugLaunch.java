@@ -21,6 +21,7 @@ package org.cloudfoundry.ide.eclipse.server.core.internal.debug;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudErrorUtil;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
+import org.cloudfoundry.ide.eclipse.server.core.internal.Messages;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
@@ -30,6 +31,7 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchConfigurationType;
 import org.eclipse.debug.core.ILaunchConfigurationWorkingCopy;
 import org.eclipse.jdt.launching.IJavaLaunchConfigurationConstants;
+import org.eclipse.osgi.util.NLS;
 
 /**
  * Creates a debug launch configuration.
@@ -169,8 +171,11 @@ public class DebugLaunch {
 
 		}
 		else {
-			throw CloudErrorUtil
+/*			throw CloudErrorUtil
 					.toCoreException("No debug launch configuration found for - " + provider.getLaunchConfigurationID()); //$NON-NLS-1$
+*/			//2015.07.31 added by ohdoking 
+			throw CloudErrorUtil
+			.toCoreException(NLS.bind(Messages.DebugLaunch_ERROR_FIND_DEBUG_CONFIGURATION, provider.getLaunchConfigurationID())); //$NON-NLS-1$
 		}
 
 	}
@@ -191,10 +196,14 @@ public class DebugLaunch {
 			error = t;
 		}
 		if (descriptor == null || !descriptor.areValidIPandPort()) {
+			//2015.07.31 added by ohdoking 
 			throw CloudErrorUtil
+			.toCoreException(
+					NLS.bind(Messages.DebugLaunch_ERROR_CONNECT_DEBUGGER, getApplicationModule().getDeployedApplicationName()), error); //$NON-NLS-1$
+/*			throw CloudErrorUtil
 					.toCoreException(
 							"Failed to connect debugger to Cloud application - Timed out resolving port and IP for application: " + getApplicationModule().getDeployedApplicationName(), error); //$NON-NLS-1$
-		}
+*/		}
 		return descriptor;
 	}
 

@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -37,6 +37,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jface.operation.IRunnableContext;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -200,8 +201,10 @@ public class CloudFoundryServerWizardFragment extends WizardFragment {
 		cloudServer = (CloudFoundryServer) server.loadAdapter(CloudFoundryServer.class, null);
 		if (cloudServer == null) {
 			CloudFoundryPlugin
-					.logError("Cloud Foundry Server Framework Error: Failed to create a Cloud Foundry server working copy for: " //$NON-NLS-1$
-							+ server.getId() + ". Please check if the plugin has been installed correctly."); //$NON-NLS-1$
+/*			.logError("Cloud Foundry Server Framework Error: Failed to create a Cloud Foundry server working copy for: " //$NON-NLS-1$
+					+ server.getId() + ". Please check if the plugin has been installed correctly."); //$NON-NLS-1$
+*/					//2015.07.31 added by ohdoking 
+			.logError(NLS.bind(Messages.CloudFoundryServerWizardFragment_ERROR_CREATE_SERVER_WORKING_COPY, server.getId())); 
 		}
 	}
 

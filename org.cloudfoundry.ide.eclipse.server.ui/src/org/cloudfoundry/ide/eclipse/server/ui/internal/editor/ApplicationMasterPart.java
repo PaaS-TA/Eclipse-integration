@@ -195,7 +195,9 @@ public class ApplicationMasterPart extends SectionPart {
 
 		@Override
 		public boolean performDrop(final Object data) {
-			final String jobName = "Deploying application"; //$NON-NLS-1$
+//			final String jobName = "Deploying application"; //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			final String jobName = Messages.ApplicationMasterPart_DEPLOYING_APPLICATION; //$NON-NLS-1$
 			UIJob job = new UIJob(jobName) {
 
 				@Override

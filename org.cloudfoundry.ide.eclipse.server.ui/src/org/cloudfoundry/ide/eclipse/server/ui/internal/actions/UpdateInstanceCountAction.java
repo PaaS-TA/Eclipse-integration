@@ -21,6 +21,7 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.actions;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.ICloudFoundryOperation;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.editor.CloudFoundryApplicationsEditorPage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -46,7 +47,9 @@ public class UpdateInstanceCountAction extends EditorAction {
 
 	@Override
 	public String getJobName() {
-		return "Updating instance count"; //$NON-NLS-1$
+//		return "Updating instance count"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking 
+		return Messages.UpdateInstanceCountAction_UPDATING_INSTANCE_COUNT; //$NON-NLS-1$
 	}
 
 	@Override

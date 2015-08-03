@@ -22,6 +22,7 @@ package org.cloudfoundry.ide.eclipse.server.core.internal.client;
 import org.cloudfoundry.ide.eclipse.server.core.ICloudFoundryApplicationModule;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudErrorUtil;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
+import org.cloudfoundry.ide.eclipse.server.core.internal.Messages;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.OperationCanceledException;
@@ -75,7 +76,9 @@ public abstract class AbstractPublishApplicationOperation extends BehaviourOpera
 		CloudFoundryApplicationModule appModule = cloudServer.getCloudModule(module);
 
 		if (appModule == null) {
-			throw CloudErrorUtil.toCoreException(NLS.bind(INTERNAL_ERROR_NO_MAPPED_CLOUD_MODULE, modules[0].getId()));
+//			throw CloudErrorUtil.toCoreException(NLS.bind(INTERNAL_ERROR_NO_MAPPED_CLOUD_MODULE, modules[0].getId()));
+			//2015.07.31 added by ohdoking 
+			throw CloudErrorUtil.toCoreException(NLS.bind(Messages.ManifestParser_CANT_OPEN_OUTPUT_STREAM, modules[0].getId()));
 		}
 
 		return appModule;

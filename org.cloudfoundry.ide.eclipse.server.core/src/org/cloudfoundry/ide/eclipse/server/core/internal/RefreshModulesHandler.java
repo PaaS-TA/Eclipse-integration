@@ -47,7 +47,9 @@ public class RefreshModulesHandler {
 
 	private BehaviourOperation opToRun;
 
-	private static final String NO_SERVER_ERROR = "Null server in refresh module handler. Unable to schedule module refresh."; //$NON-NLS-1$
+//	private static final String NO_SERVER_ERROR = "Null server in refresh module handler. Unable to schedule module refresh."; //$NON-NLS-1$
+	//2015.07.31 added by ohdoking 
+	private static final String NO_SERVER_ERROR = Messages.RefreshModulesHandler_NULL_SERVER; //$NON-NLS-1$
 
 	/**
 	 * 

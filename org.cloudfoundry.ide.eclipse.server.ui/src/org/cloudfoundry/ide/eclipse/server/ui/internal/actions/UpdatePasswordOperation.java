@@ -53,7 +53,9 @@ public class UpdatePasswordOperation implements ICloudFoundryOperation {
 			public void run() {
 				Shell shell = CloudUiUtil.getShell();
 				if (shell == null || shell.isDisposed()) {
-					CloudFoundryPlugin.logError("No shell available to open update password dialogue"); //$NON-NLS-1$
+//					CloudFoundryPlugin.logError("No shell available to open update password dialogue"); //$NON-NLS-1$
+					//2015.07.31 added by ohdoking 
+					CloudFoundryPlugin.logError(Messages.UpdatePasswordOperation_ERROP_OPEN_SHELL); //$NON-NLS-1$
 					return;
 				}
 				final UpdatePasswordDialog dialog = new UpdatePasswordDialog(shell, cloudServer.getUsername(),

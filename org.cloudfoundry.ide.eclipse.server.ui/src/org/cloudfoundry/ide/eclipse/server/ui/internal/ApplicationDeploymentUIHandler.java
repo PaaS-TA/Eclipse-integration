@@ -42,6 +42,7 @@ import org.eclipse.core.runtime.OperationCanceledException;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.jface.dialogs.Dialog;
 import org.eclipse.jface.wizard.WizardDialog;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.PlatformUI;
 
@@ -102,12 +103,20 @@ public class ApplicationDeploymentUIHandler {
 					.getLocalModule());
 
 			if (providerDelegate == null) {
-				throw CloudErrorUtil.toCoreException("Failed to open application deployment wizard for: " //$NON-NLS-1$
+				/*throw CloudErrorUtil.toCoreException("Failed to open application deployment wizard for: " //$NON-NLS-1$
 						+ appModule.getDeployedApplicationName()
 						+ " when attempting to push application to " //$NON-NLS-1$
 						+ server.getServer().getName()
 						+ ". No application provider found that corresponds to the application type: " //$NON-NLS-1$
-						+ appModule.getLocalModule().getModuleType().getId());
+						+ appModule.getLocalModule().getModuleType().getId());*/
+				
+				//2015.08.01 added by ohdoking 
+				String[] tempMessage = new String[2];
+				tempMessage[0] = appModule.getDeployedApplicationName();
+				tempMessage[1] = server.getServer().getName();
+				tempMessage[2] = appModule.getLocalModule().getModuleType().getId();
+				
+				throw CloudErrorUtil.toCoreException(NLS.bind(Messages.ApplicationDeploymentUIHandler_ERROR_OPEN_DEPLOY_WIZARD, tempMessage));
 			}
 
 			// Now parse the manifest file, if it exists, and load into a
@@ -186,7 +195,10 @@ public class ApplicationDeploymentUIHandler {
 
 			if (cancelled[0]) {
 				if (!status[0].isOK()) {
-					CloudFoundryPlugin.logError("Failed to deploy application due to: " + status[0].getMessage(), //$NON-NLS-1$
+					/*CloudFoundryPlugin.logError("Failed to deploy application due to: " + status[0].getMessage(), //$NON-NLS-1$
+							status[0].getException());*/
+					//2015.08.01 added by ohdoking 
+					CloudFoundryPlugin.logError(NLS.bind(Messages.ApplicationDeploymentUIHandler_ERROR_DEOPLOY_APPLICATION, status[0].getMessage()), //$NON-NLS-1$
 							status[0].getException());
 				}
 				throw new OperationCanceledException();

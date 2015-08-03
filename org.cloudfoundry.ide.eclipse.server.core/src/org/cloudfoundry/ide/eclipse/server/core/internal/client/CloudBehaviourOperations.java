@@ -145,8 +145,12 @@ public class CloudBehaviourOperations {
 					appModule.getLocalModule());
 		}
 		else {
-			throw CloudErrorUtil
+/*			throw CloudErrorUtil
 					.toCoreException("Expected an existing Cloud application module but found none. Unable to update application URLs"); //$NON-NLS-1$
+*/	
+			//2015.07.31 added by ohdoking 
+			throw CloudErrorUtil
+			.toCoreException(Messages.CloudBehaviourOperations_CANT_FIND_MODULE); 
 		}
 	}
 
@@ -213,7 +217,10 @@ public class CloudBehaviourOperations {
 			throws CoreException {
 
 		if (modules == null || modules.length == 0) {
-			throw CloudErrorUtil.toCoreException(INTERNAL_ERROR_NO_WST_MODULE);
+//			throw CloudErrorUtil.toCoreException(INTERNAL_ERROR_NO_WST_MODULE);
+			
+			//2015.07.31 added by ohdoking 
+			throw CloudErrorUtil.toCoreException(Messages.CloudBehaviourOperations_INTERNAL_ERROR_NO_WST_MODULE);
 		}
 		ICloudFoundryOperation operation = null;
 		// Set the deployment mode
@@ -240,7 +247,9 @@ public class CloudBehaviourOperations {
 		}
 
 		if (operation == null) {
-			throw CloudErrorUtil.toCoreException("Internal Error: Unable to resolve a Cloud application operation."); //$NON-NLS-1$
+//			throw CloudErrorUtil.toCoreException("Internal Error: Unable to resolve a Cloud application operation."); //$NON-NLS-1$
+			//2015.07.31 added by ohdoking      
+			throw CloudErrorUtil.toCoreException(Messages.CloudBehaviourOperations_CANT_FIND_OPERATION); //$NON-NLS-1$
 		}
 		return operation;
 	}
@@ -299,8 +308,11 @@ public class CloudBehaviourOperations {
 			public void run(IProgressMonitor monitor) throws CoreException {
 
 				if (module == null) {
-					throw CloudErrorUtil.toCoreException("Internal Error: No module to refresh in - " + //$NON-NLS-1$
+					/*throw CloudErrorUtil.toCoreException("Internal Error: No module to refresh in - " + //$NON-NLS-1$
 							getBehaviour().getCloudFoundryServer().getServerId());
+*/
+					//2015.07.31 added by ohdoking 
+					throw CloudErrorUtil.toCoreException(NLS.bind(Messages.CloudBehaviourOperations_CANT_REFRESH_MODULE, getBehaviour().getCloudFoundryServer().getServerId()));
 				}
 
 				getBehaviour().updateCloudModuleWithInstances(module, monitor);
@@ -322,8 +334,11 @@ public class CloudBehaviourOperations {
 			public void run(IProgressMonitor monitor) throws CoreException {
 
 				if (module == null) {
-					throw CloudErrorUtil.toCoreException("Internal Error: No module to refresh in - " + //$NON-NLS-1$
-							getBehaviour().getCloudFoundryServer().getServerId());
+					/*throw CloudErrorUtil.toCoreException("Internal Error: No module to refresh in - " + //$NON-NLS-1$
+							getBehaviour().getCloudFoundryServer().getServerId());*/
+					
+					//2015.07.31 added by ohdoking 
+					throw CloudErrorUtil.toCoreException(NLS.bind(Messages.CloudBehaviourOperations_CANT_REFRESH_MODULE, getBehaviour().getCloudFoundryServer().getServerId()));
 				}
 
 				getBehaviour().updateCloudModuleWithInstances(module, monitor);

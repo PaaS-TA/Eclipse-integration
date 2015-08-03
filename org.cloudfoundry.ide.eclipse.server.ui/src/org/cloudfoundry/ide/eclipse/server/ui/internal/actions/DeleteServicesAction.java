@@ -55,7 +55,9 @@ public class DeleteServicesAction extends EditorAction {
 
 	@Override
 	public String getJobName() {
-		return "Deleting services"; //$NON-NLS-1$
+//		return "Deleting services"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking
+		return Messages.DeleteServicesAction_DELETING_SERVICE; //$NON-NLS-1$
 	}
 
 	@Override

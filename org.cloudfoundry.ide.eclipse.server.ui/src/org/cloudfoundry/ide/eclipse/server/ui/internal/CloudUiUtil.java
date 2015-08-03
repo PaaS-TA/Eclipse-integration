@@ -365,7 +365,9 @@ public class CloudUiUtil {
 				CloudFoundryServerUiPlugin
 						.getDefault()
 						.getLog()
-						.log(new Status(IStatus.ERROR, CloudFoundryServerUiPlugin.PLUGIN_ID, "Unexpected exception", e)); //$NON-NLS-1$
+//						.log(new Status(IStatus.ERROR, CloudFoundryServerUiPlugin.PLUGIN_ID, "Unexpected exception", e)); //$NON-NLS-1$
+						//2015.08.01 added by ohdoking 
+						.log(new Status(IStatus.ERROR, CloudFoundryServerUiPlugin.PLUGIN_ID, Messages.CloudUiUtil_UNEXPECT_EXCEPTION, e)); //$NON-NLS-1$
 			}
 		}
 		catch (InterruptedException e) {

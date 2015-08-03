@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -22,6 +22,7 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.actions;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
@@ -64,7 +65,9 @@ public abstract class AbstractCloudFoundryServerAction implements IObjectActionD
 		CloudFoundryApplicationModule appModule = cloudServer != null && selectedModule != null ? cloudServer
 				.getExistingCloudModule(selectedModule) : null;
 		if (selectedServer == null) {
-			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+//			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			error = Messages.AbstractCloudFoundryServerAction_ERROR_NO_INSTANCE; //$NON-NLS-1$
 		}
 
 		if (error == null) {

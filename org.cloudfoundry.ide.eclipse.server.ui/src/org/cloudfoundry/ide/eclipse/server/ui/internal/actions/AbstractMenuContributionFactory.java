@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -22,6 +22,7 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.actions;
 import java.util.List;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.expressions.EvaluationResult;
 import org.eclipse.core.expressions.Expression;
 import org.eclipse.core.expressions.ExpressionInfo;
@@ -44,7 +45,9 @@ public abstract class AbstractMenuContributionFactory extends AbstractContributi
 		IMenuService menuService = (IMenuService) serviceLocator.getService(IMenuService.class);
 		if (menuService == null) {
 			CloudFoundryPlugin
-					.logError("Unable to retrieve Eclipse menu service. Cannot add Cloud Foundry context menus."); //$NON-NLS-1$
+					//.logError("Unable to retrieve Eclipse menu service. Cannot add Cloud Foundry context menus."); //$NON-NLS-1$
+					//2015.07.31 added by ohdoking 
+					.logError(Messages.AbstractMenuContributionFactory_ERROR_RETRIEVE_MENU_SERVICE); //$NON-NLS-1$
 			return;
 		}
 

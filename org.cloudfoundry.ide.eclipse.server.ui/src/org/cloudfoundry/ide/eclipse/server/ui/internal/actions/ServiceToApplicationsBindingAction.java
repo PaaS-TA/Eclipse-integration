@@ -67,7 +67,9 @@ public class ServiceToApplicationsBindingAction extends Action {
 				}
 				catch (CoreException e) {
 					if (Logger.ERROR) {
-						Logger.println(Logger.ERROR_LEVEL, this, "runInUIThread", "Error launching wizard", e); //$NON-NLS-1$ //$NON-NLS-2$
+//						Logger.println(Logger.ERROR_LEVEL, this, "runInUIThread", "Error launching wizard", e); //$NON-NLS-1$ //$NON-NLS-2$
+						//2015.07.31 added by ohdoking 
+						Logger.println(Logger.ERROR_LEVEL, this, "runInUIThread", Messages.ServiceToApplicationsBindingAction_ERROR_LAUNCHING_WIZARD, e); //$NON-NLS-1$ //$NON-NLS-2$
 					}
 				}
 

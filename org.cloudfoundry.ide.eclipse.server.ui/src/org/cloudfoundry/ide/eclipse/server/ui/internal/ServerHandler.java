@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -83,7 +83,7 @@ public class ServerHandler {
 	 */
 	private String serverPath;
 
-	private String verifyPath;
+	private String verifyPath; 
 
 	private boolean forceCreateRuntime;
 
@@ -143,12 +143,16 @@ public class ServerHandler {
 	public IServer createServer(IProgressMonitor monitor, IOverwriteQuery query, ServerHandlerCallback callback)
 			throws CoreException {
 		try {
-			monitor.beginTask("Creating server configuration", 4); //$NON-NLS-1$
+//			monitor.beginTask("Creating server configuration", 4); //$NON-NLS-1$
+			//2015.08.01 added by ohdoking 
+			monitor.beginTask(Messages.ServerHandler_CREATING_SERVER_CONFIGURATION, 4); 
 
 			IServerType st = ServerCore.findServerType(serverType);
 			if (st == null) {
-				throw new CoreException(CloudFoundryPlugin.getErrorStatus("Could not find server type \"" + serverType //$NON-NLS-1$
-						+ "\"")); //$NON-NLS-1$
+				/*throw new CoreException(CloudFoundryPlugin.getErrorStatus("Could not find server type \"" + serverType //$NON-NLS-1$
+						+ "\""));*/ //$NON-NLS-1$
+				//2015.08.01 added by ohdoking 
+				throw new CoreException(CloudFoundryPlugin.getErrorStatus(NLS.bind(Messages.ServerHandler_ERROR_FIND_SERVER_TYPE, serverType))); 
 			}
 			IRuntime runtime;
 			if (serverPath != null) {
@@ -175,7 +179,9 @@ public class ServerHandler {
 
 	public void deleteServerAndRuntime(IProgressMonitor monitor) throws CoreException {
 		try {
-			monitor.beginTask("Deleting server configuration", 4); //$NON-NLS-1$
+//			monitor.beginTask("Deleting server configuration", 4); //$NON-NLS-1$
+			//2015.08.01 added by ohdoking 
+			monitor.beginTask(Messages.ServerHandler_DELETING_SERVER_CONFIGURATION, 4); 
 
 			IServer server = ServerCore.findServer(serverName);
 			if (server != null) {
@@ -227,7 +233,9 @@ public class ServerHandler {
 	 */
 	public IServer launch(IProject project, IProgressMonitor monitor) throws CoreException {
 		try {
-			monitor.beginTask("Launching " + project.getName(), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+//			monitor.beginTask("Launching " + project.getName(), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
+			//2015.08.01 added by ohdoking 
+			monitor.beginTask(NLS.bind(Messages.ServerHandler_LAUNCTION, project.getName()), IProgressMonitor.UNKNOWN); //$NON-NLS-1$
 
 			IServer server = createServer(new SubProgressMonitor(monitor, 1), NEVER_OVERWRITE);
 
@@ -235,7 +243,9 @@ public class ServerHandler {
 			IModule[] modules = ServerUtil.getModules(project);
 			if (modules == null || modules.length == 0) {
 				throw new CoreException(
-						CloudFoundryPlugin.getErrorStatus("Sample project does not contain web modules: " + project)); //$NON-NLS-1$
+//						CloudFoundryPlugin.getErrorStatus("Sample project does not contain web modules: " + project)); //$NON-NLS-1$
+						//2015.08.01 added by ohdoking 
+						CloudFoundryPlugin.getErrorStatus(NLS.bind(Messages.ServerHandler_ERROR_CONTAIN_PROJECT, project))); 
 			}
 
 			if (!Arrays.asList(wc.getModules()).contains(modules[0])) {
@@ -342,7 +352,9 @@ public class ServerHandler {
 				}
 			}
 		}
-		throw new CoreException(CloudFoundryPlugin.getErrorStatus("No matching runtime found")); //$NON-NLS-1$
+//		throw new CoreException(CloudFoundryPlugin.getErrorStatus("No matching runtime found")); //$NON-NLS-1$
+		//2015.08.01 added by ohdoking 
+		throw new CoreException(CloudFoundryPlugin.getErrorStatus(Messages.ServerHandler_ERROR_FIND_RUNTIME)); //$NON-NLS-1$
 	}
 
 	private IServer findServer(IServerType st, IRuntime runtime, IProgressMonitor monitor) throws CoreException {
@@ -354,7 +366,9 @@ public class ServerHandler {
 				}
 			}
 		}
-		throw new CoreException(CloudFoundryPlugin.getErrorStatus("No matching server found")); //$NON-NLS-1$
+//		throw new CoreException(CloudFoundryPlugin.getErrorStatus("No matching server found")); //$NON-NLS-1$
+		//2015.08.01 added by ohdoking 
+		throw new CoreException(CloudFoundryPlugin.getErrorStatus(Messages.ServerHandler_ERROR_FIND_SERVER)); 
 	}
 
 	private boolean query(IOverwriteQuery query, String message) {
@@ -369,7 +383,9 @@ public class ServerHandler {
 	}
 
 	private void restartServer(IServer server, IProgressMonitor monitor) throws CoreException {
-		monitor.subTask("Restarting server"); //$NON-NLS-1$
+//		monitor.subTask("Restarting server"); //$NON-NLS-1$
+		//2015.08.01 added by ohdoking 
+		monitor.subTask(Messages.ServerHandler_RESTARTING_SERVER); 
 
 		final CountDownLatch eventLatch = new CountDownLatch(1);
 		IServerListener serverListener = new IServerListener() {
@@ -394,7 +410,9 @@ public class ServerHandler {
 			}
 
 			// wait 10 seconds
-			monitor.subTask("Waiting for server to start"); //$NON-NLS-1$
+//			monitor.subTask("Waiting for server to start"); //$NON-NLS-1$
+			//2015.08.01 added by ohdoking 
+			monitor.subTask(Messages.ServerHandler_WATING_START_SERVER); 
 			for (int i = 0; i < 50; i++) {
 				try {
 					if (eventLatch.await(200, TimeUnit.MILLISECONDS)) {

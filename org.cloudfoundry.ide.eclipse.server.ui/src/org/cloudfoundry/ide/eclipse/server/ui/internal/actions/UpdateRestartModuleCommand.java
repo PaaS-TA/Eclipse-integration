@@ -38,7 +38,9 @@ import org.eclipse.wst.server.core.IModule;
 public class UpdateRestartModuleCommand extends BaseCommandHandler {
 
 	private String getFailureMessage() {
-		return "Unable to update and restart module"; //$NON-NLS-1$
+//		return "Unable to update and restart module"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking 
+		return org.cloudfoundry.ide.eclipse.server.ui.internal.Messages.UpdateRestartModuleCommand_ERROR_UPDATE_AND_RESTART_MODULE; //$NON-NLS-1$
 	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -49,7 +51,9 @@ public class UpdateRestartModuleCommand extends BaseCommandHandler {
 		CloudFoundryApplicationModule appModule = cloudServer != null && selectedModule != null ? cloudServer
 				.getExistingCloudModule(selectedModule) : null;
 		if (selectedServer == null) {
-			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+//			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			error = org.cloudfoundry.ide.eclipse.server.ui.internal.Messages.UpdateRestartModuleCommand_ERROR_EXIST_SERVER_INSTANCE; //$NON-NLS-1$
 		}
 
 		if (error == null) {

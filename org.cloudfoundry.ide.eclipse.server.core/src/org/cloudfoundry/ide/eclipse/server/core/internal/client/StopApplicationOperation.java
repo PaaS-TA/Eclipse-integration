@@ -61,8 +61,11 @@ class StopApplicationOperation extends AbstractPublishApplicationOperation {
 			final CloudFoundryApplicationModule cloudModule = cloudServer.getExistingCloudModule(getModule());
 
 			if (cloudModule == null) {
-				throw CloudErrorUtil.toCoreException("Unable to stop application as no cloud module found for: " //$NON-NLS-1$
+/*				throw CloudErrorUtil.toCoreException("Unable to stop application as no cloud module found for: " //$NON-NLS-1$
 						+ getModules()[0].getName());
+*/				//2015.07.31 added by ohdoking 
+				throw CloudErrorUtil.toCoreException(NLS.bind(Messages.StopApplicationOperation_ERROR_FIND_MODULE,getModules()[0].getName() )
+);
 			}
 
 			SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
@@ -92,7 +95,7 @@ class StopApplicationOperation extends AbstractPublishApplicationOperation {
 
 			getBehaviour().printlnToConsole(cloudModule, Messages.CONSOLE_APP_STOPPED);
 			CloudFoundryPlugin.getCallback().stopApplicationConsole(cloudModule, cloudServer);
-			subMonitor.worked(20);
+			subMonitor.worked(20);	
 		}
 		finally {
 			if (!succeeded) {

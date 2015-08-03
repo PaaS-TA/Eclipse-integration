@@ -22,6 +22,7 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.actions;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
@@ -35,7 +36,9 @@ public class ShowConsoleViewerCommand extends BaseCommandHandler {
 		CloudFoundryApplicationModule appModule = cloudServer != null && selectedModule != null ? cloudServer
 				.getExistingCloudModule(selectedModule) : null;
 		if (selectedServer == null) {
-			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+//			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			error = Messages.ShowConsoleViewerCommand_ERROR_EXIST_SERVER_INSTANCE; //$NON-NLS-1$
 		}
 
 		if (error == null) {

@@ -131,8 +131,13 @@ public class JavaWebApplicationDelegate extends AbstractApplicationDelegate {
 				catch (JavaModelException e) {
 					// Log the error but don't throw it again as there may be
 					// other ways to detect the framework
-					CloudFoundryPlugin.log(new Status(IStatus.WARNING, CloudFoundryPlugin.PLUGIN_ID,
+					/*CloudFoundryPlugin.log(new Status(IStatus.WARNING, CloudFoundryPlugin.PLUGIN_ID,
 							"Unexpected error during auto detection of application type", e)); //$NON-NLS-1$
+*/
+					
+					//2015.07.31 added by ohdoking 
+					CloudFoundryPlugin.log(new Status(IStatus.WARNING, CloudFoundryPlugin.PLUGIN_ID,
+							Messages.JavaWebApplicationDelegate_ERROR_DETECT_APPLICATION_TYPE, e)); 
 				}
 
 				if (CloudFoundryProjectUtil.isSpringProject(project)) {

@@ -51,7 +51,9 @@ public class RemoveServicesFromApplicationAction extends ModifyServicesForApplic
 
 	@Override
 	public String getJobName() {
-		return "Unbinding services"; //$NON-NLS-1$
+//		return "Unbinding services"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking 
+		return Messages.RemoveServicesFromApplicationAction_UNBINDING_SERVICE; //$NON-NLS-1$
 	}
 
 	@Override

@@ -48,8 +48,11 @@ public class DisconnectCommand extends BaseCommandHandler {
 				}
 				catch (CoreException e) {
 //					Trace.trace(Trace.STRING_SEVERE, "Error calling disconnect() ", e);
-					return new Status(IStatus.ERROR, CloudFoundryServerUiPlugin.PLUGIN_ID, NLS.bind(
+/*					return new Status(IStatus.ERROR, CloudFoundryServerUiPlugin.PLUGIN_ID, NLS.bind(
 							"Failed to disconnect from server: {0}", e.getMessage())); //$NON-NLS-1$
+*/					//2015.07.31 added by ohdoking
+					return new Status(IStatus.ERROR, CloudFoundryServerUiPlugin.PLUGIN_ID, NLS.bind(
+							Messages.DisconnectCommand_DISCONNECT_SERVER, e.getMessage())); //$NON-NLS-1$
 				}
 				return Status.OK_STATUS;
 			}

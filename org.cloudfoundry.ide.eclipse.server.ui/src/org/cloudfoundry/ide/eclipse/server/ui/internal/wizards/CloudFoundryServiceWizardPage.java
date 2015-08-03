@@ -122,6 +122,8 @@ public class CloudFoundryServiceWizardPage extends WizardPage {
 			setMessage(status.getMessage(), IMessageProvider.ERROR);
 		} catch (InterruptedException e) {
 	    	if (Logger.WARNING) {
+	    		
+	    		//today!!
 	    		Logger.println(Logger.WARNING_LEVEL, this, "updateConfiguration", "Failed to load the list of available services."); //$NON-NLS-1$ //$NON-NLS-2$
 	    	}
 		}

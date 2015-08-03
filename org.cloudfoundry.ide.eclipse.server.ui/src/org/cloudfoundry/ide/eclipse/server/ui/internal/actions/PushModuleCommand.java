@@ -38,7 +38,9 @@ import org.eclipse.wst.server.core.IModule;
 public class PushModuleCommand extends BaseCommandHandler {
 
 	private String getFailureMessage() {
-		return "Unable to push module"; //$NON-NLS-1$
+//		return "Unable to push module"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking 
+		return org.cloudfoundry.ide.eclipse.server.ui.internal.Messages.PushModuleCommand_ERROR_PUSH_MODULE; //$NON-NLS-1$
 	}
 
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -49,7 +51,9 @@ public class PushModuleCommand extends BaseCommandHandler {
 		CloudFoundryApplicationModule appModule = cloudServer != null && selectedModule != null ? cloudServer
 				.getExistingCloudModule(selectedModule) : null;
 		if (selectedServer == null) {
-			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+//			error = "No Cloud Foundry server instance available to run the selected action."; //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			return org.cloudfoundry.ide.eclipse.server.ui.internal.Messages.PushModuleCommand_ERROR_EXIST_SERVER_INSTANCE;
 		}
 
 		if (error == null) {

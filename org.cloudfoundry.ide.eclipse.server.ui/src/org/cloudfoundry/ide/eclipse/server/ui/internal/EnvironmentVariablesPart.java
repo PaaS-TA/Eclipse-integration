@@ -131,7 +131,7 @@ public class EnvironmentVariablesPart extends UIPart {
 			columnProperties[columnIndex] = column.name();
 			TableColumn tableColumn = new TableColumn(table, SWT.NONE, columnIndex++);
 			tableColumn.setData(column);
-			tableColumn.setText(column.name());
+			tableColumn.setText(column.getText());
 			tableColumn.setWidth(column.getWidth());
 		}
 
@@ -292,15 +292,21 @@ public class EnvironmentVariablesPart extends UIPart {
 	}
 
 	enum ViewColumn {
-		Variable(200), Value(200);
+		Variable(200,Messages.COMMONTXT_VARIABLE), Value(200,Messages.COMMONTXT_VALUE);
 		private int width;
+		private String text;
 
-		private ViewColumn(int width) {
+		private ViewColumn(int width, String text) {
 			this.width = width;
+			this.text = text;
 		}
-
+		
 		public int getWidth() {
 			return width;
+		}
+		
+		public String getText() {
+			return text;
 		}
 	}
 

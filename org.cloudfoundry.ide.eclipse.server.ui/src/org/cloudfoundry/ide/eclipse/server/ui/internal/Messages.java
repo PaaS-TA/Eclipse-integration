@@ -1002,8 +1002,11 @@ public class Messages extends NLS {
 	public static String ServerHandler_WATING_START_SERVER;
 
 	
-	//
-	
+	//2015.08.01 added by ohdoking
+
+	public static String COMMONTXT_VARIABLE;
+	public static String COMMONTXT_VALUE;
+
 	
 
 	private static final String BUNDLE_NAME = CloudFoundryServerUiPlugin.PLUGIN_ID + ".internal.Messages"; //$NON-NLS-1$

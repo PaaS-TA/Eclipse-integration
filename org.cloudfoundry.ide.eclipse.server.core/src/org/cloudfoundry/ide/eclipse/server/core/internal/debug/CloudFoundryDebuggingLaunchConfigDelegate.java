@@ -24,6 +24,7 @@ import java.util.Map;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
+import org.cloudfoundry.ide.eclipse.server.core.internal.Messages;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -79,8 +80,10 @@ public class CloudFoundryDebuggingLaunchConfigDelegate extends AbstractJavaLaunc
 			}
 		}
 		else {
-			CloudFoundryPlugin
-					.logError("Failed to launch debug configuration. IP and host for application instance cannot be resolved."); //$NON-NLS-1$
+/*			CloudFoundryPlugin
+			.logError("Failed to launch debug configuration. IP and host for application instance cannot be resolved."); //$NON-NLS-1$
+*/			CloudFoundryPlugin
+					.logError(Messages.CloudFoundryDebuggingLaunchConfigDelegate_ERROR_LAUNCH_DEBUG_CONFIGURATION); //$NON-NLS-1$
 		}
 	}
 

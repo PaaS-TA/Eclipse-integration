@@ -250,7 +250,81 @@ public class Messages extends NLS {
 	public static String JavaWebApplicationDelegate_ERROR_NO_MAPPED_APP_URL;
 
 	public static String ModuleResourceApplicationArchive_ERROR_NO_DEPLOYABLE_RES_FOUND;
+	
+	
+	// 2015. 07. 29added by ohdoking
+	
+	public static String ApplicationRegistry_ERROR_DEFAULT_JAVA_WEB_PROVIDER_ID;
+	public static String ApplicationRegistry_ERROR_FAIL_READ_TYPE_PROVIDER;
+	public static String ApplicationRegistry_ERROR_NON_PROVIDER_ID;
+	public static String FrameworkProvider_ERROR_NON_DELEGATE;
+	public static String JavaWebApplicationDelegate_ERROR_DETECT_APPLICATION_TYPE;
+	public static String ManifestParser_EXPECT_TOP_LEVEL_LIST;
+	public static String ManifestParser_EXPECT_APPLICATION_PROPERTY_MAP;
+	public static String ManifestParser_FAIL_READ_MEMORY;
+	public static String ManifestParser_FAIL_PARSE_MEMORY;
+	public static String ManifestParser_EXPECT_MANIFEST_FILE;
+	public static String ManifestParser_EXPECT_TOP_LEVEL_LIST_CAN_WRITE;
+	public static String ManifestParser_CANT_SERIALIZE;
+	public static String ManifestParser_CANT_OPEN_OUTPUT_STREAM;
+	public static String AbstractPublishApplicationOperation_INTERNAL_ERROR_NO_MAPPED_CLOUD_MODULE;
+	public static String CloudBehaviourOperations_INTERNAL_ERROR_NO_WST_MODULE;
+	public static String CloudBehaviourOperations_CANT_FIND_MODULE;
+	public static String CloudBehaviourOperations_CANT_FIND_OPERATION;
+	public static String CloudBehaviourOperations_CANT_REFRESH_MODULE;
+	public static String CloudFoundryServerBehaviour_LOGIN;
+	public static String CloudFoundryServerBehaviour_GET_DOMAIN;
+	public static String CloudFoundryServerBehaviour_DELETE_APPLICATION;
+	public static String CloudFoundryServerBehaviour_ERROR_FAIL_LOOKUP_URL;
+	public static String CloudFoundryServerBehaviour_ERROR_LOAD_SERVER;
+	public static String CloudFoundryServerBehaviour_GET_AVAILABLE_SERVICE_OPTIONS;
+	public static String CloudFoundryServerBehaviour_DELETE_ALL_APPLICATION;
+	public static String CloudFoundryServerBehaviour_ADD_APPLICATION_LOG_LISTENER;
+	public static String CloudFoundryServerBehaviour_GET_EXISTING_APPLICATION_LOGS;
+	public static String CloudFoundryServerBehaviour_UPDATE_APPLICATION_INSTANCES;
+	public static String CloudFoundryServerBehaviour_UPDATE_PASSWORD;
+	public static String CloudFoundryServerBehaviour_REGISTER_ACCOUNT;
+	public static String CloudFoundryServerBehaviour_GET_ORG_AND_SPACE;
+	public static String CloudFoundryServerBehaviour_DELETE_ROUTE;
+	public static String CloudFoundryServerBehaviour_CONNECT;
+	public static String CloudFoundryServerBehaviour_ERROR_INVALID_URL;
+	public static String CloudFoundryServerBehaviour_RETRIEVE_FILE;
+	public static String RestartOperation_ERROR_START_APPLICATION;
+	public static String RestartOperation_ERROR_APPLCATION_TIMEOUT;
+	public static String StartOperation_ERROR_CREATE_WAR_FILE;
+	public static String StartOperation_ERROR_CREATE_ARCHIVE_FILE;
+	public static String StartOperation_ERROR_DEPLOY_APPLICATION;
+	public static String StopApplicationOperation_ERROR_FIND_MODULE;
+	public static String CloudFoundryDebuggingLaunchConfigDelegate_ERROR_LAUNCH_DEBUG_CONFIGURATION;
+	public static String DebugLaunch_ERROR_FIND_DEBUG_CONFIGURATION;
+	public static String DebugLaunch_ERROR_CONNECT_DEBUGGER;
+	public static String DebugOperations_ERROR_TERMINATE_DEBUG_CONNETION;
+	public static String DebugOperations_ERROR_RESOLVE_CLOUD_SERVER;
+	public static String CloudErrorUtil_NOT_PERMIT_OPERATION;
+	public static String CloudFoundryPlugin_ERROR_LOAD_CLASS;
+	public static String CloudFoundryPlugin_ERROR_LOAD_CALLBACK_EXTENTION;
+	public static String CloudFoundryPlugin_ERROR_LOAD_APPLICATION_START_TRACKER;
+	public static String CloudFoundryProjectUtil_ERROR_GET_JAVA_PROJECT;
+	public static String CloudFoundryServer_ERROR_FIND_APPLICATION_MODULE;
+	public static String CloudFoundryServer_ERROR_WHILE_UPDATING_MODULE;
+	public static String CloudUtil_ERROR_DEPLOY;
+	public static String CloudUtil_ERROR_CREATE_WAR_FILE;
+	public static String ModuleCache_ERROR_REFRESH_APPLICATION_MAPPING;
+	public static String ModuleCache_ERROR_DELETE_APPLICATION_MAPPING;
+	public static String ProcessLauncher_ERROR_FIND_PROCESS_ARGUMENT;
+	public static String ProcessLauncher_ERROR_CREATE_PROCESS;
+	public static String ProcessLauncher_EXIT_VALUE;
+	public static String ProcessLauncher_ERROR_LAUNCHING;
+	public static String ProcessLauncher_ERROR_READING;
+	public static String RefreshModulesHandler_NULL_SERVER;
+	public static String ServerCredentialsStore_ERROR_ACCESS_SECURE_PREFERENECE;
 
+
+	//
+	
+	
+	
+	
 	private static final String BUNDLE_NAME = CloudFoundryPlugin.PLUGIN_ID + ".internal.Messages"; //$NON-NLS-1$
 
 	static {

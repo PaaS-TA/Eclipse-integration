@@ -21,6 +21,7 @@ import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.ICloudFoundryOperation;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 
 public class RemapModuleProjectCommand extends UpdateMappingCommand {
 
@@ -28,7 +29,9 @@ public class RemapModuleProjectCommand extends UpdateMappingCommand {
 			CloudFoundryServer cloudServer) {
 
 		if (partSite == null || partSite.getShell() == null) {
-			CloudFoundryPlugin.logError("Unable to remap project. No shell resolved to open dialogues."); //$NON-NLS-1$
+//			CloudFoundryPlugin.logError("Unable to remap project. No shell resolved to open dialogues."); //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			CloudFoundryPlugin.logError(Messages.RemapModuleProjectCommand_REMAP_PROJECT); //$NON-NLS-1$
 		}
 		else {
 			return new MapToProjectOperation(appModule, cloudServer, partSite.getShell());

@@ -30,6 +30,7 @@ import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.cloudfoundry.ide.eclipse.server.core.internal.log.LogContentType;
 import org.cloudfoundry.ide.eclipse.server.core.internal.spaces.CloudFoundrySpace;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.console.CloudConsoleManager;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.console.StandardLogContentType;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -92,7 +93,8 @@ public class FileConsoleManager extends CloudConsoleManager {
 
 		if (contents == null) {
 			CloudFoundryPlugin
-					.logError("Internal Error: No log content type specified for log file streaming console manager"); //$NON-NLS-1$
+//					.logError("Internal Error: No log content type specified for log file streaming console manager"); //$NON-NLS-1$
+					.logError(Messages.FileConsoleManager_ERROR_EXIST_CONTENT_TYPE); //$NON-NLS-1$
 			return;
 		}
 

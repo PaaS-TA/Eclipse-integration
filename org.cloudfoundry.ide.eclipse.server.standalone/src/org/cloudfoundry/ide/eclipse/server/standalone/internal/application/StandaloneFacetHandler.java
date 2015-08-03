@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -21,6 +21,7 @@ package org.cloudfoundry.ide.eclipse.server.standalone.internal.application;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProjectUtil;
+import org.cloudfoundry.ide.eclipse.server.standalone.internal.Messages;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -113,7 +114,8 @@ public class StandaloneFacetHandler {
 			if (!new StandaloneFacetHandler(project).canAddFacet()) {
 				throw new CoreException(
 						CloudFoundryPlugin
-								.getErrorStatus("Cloud Foundry Standalone Facet can only be installed on a Java project.")); //$NON-NLS-1$
+								//.getErrorStatus("Cloud Foundry Standalone Facet can only be installed on a Java project.")); //$NON-NLS-1$
+								.getErrorStatus(Messages.StandaloneFacetHandler_ERROR_INSTALL_STANDALONE)); //$NON-NLS-1$
 			}
 		}
 	}

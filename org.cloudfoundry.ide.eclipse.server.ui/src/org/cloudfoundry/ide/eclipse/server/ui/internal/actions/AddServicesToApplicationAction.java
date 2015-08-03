@@ -24,6 +24,7 @@ import java.util.List;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryServerBehaviour;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.editor.CloudFoundryApplicationsEditorPage;
 import org.eclipse.jface.viewers.IStructuredSelection;
 
@@ -45,7 +46,9 @@ public class AddServicesToApplicationAction extends ModifyServicesForApplication
 
 	@Override
 	public String getJobName() {
-		return "Adding services"; //$NON-NLS-1$
+//		return "Adding services"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking 
+		return Messages.AddServicesToApplicationAction_ADDING_SERVICE; //$NON-NLS-1$
 	}
 
 	@Override

@@ -21,6 +21,7 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.actions;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.ICloudFoundryOperation;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.cloudfoundry.ide.eclipse.server.ui.internal.editor.CloudFoundryApplicationsEditorPage;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -43,7 +44,9 @@ public class UpdateApplicationMemoryAction extends EditorAction {
 
 	@Override
 	public String getJobName() {
-		return "Updating application memory limit"; //$NON-NLS-1$
+//		return "Updating application memory limit"; //$NON-NLS-1$
+		//2015.07.31 added by ohdoking 
+		return Messages.UpdateApplicationMemoryAction_UPDATING_APPLICATION_MEMORY_LIMIT; //$NON-NLS-1$
 	}
 
 	@Override

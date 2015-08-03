@@ -149,8 +149,12 @@ public class StartOperation extends RestartOperation {
 
 					warFile = CloudUtil.createWarFile(getModules(), server, subMonitor.newChild(10));
 					if (warFile == null || !warFile.exists()) {
-						throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
+/*						throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
 								"Unable to create war file for application: " + deploymentName)); //$NON-NLS-1$
+*/						
+						//2015.07.31 added by ohdoking 
+						throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
+								NLS.bind(Messages.StartOperation_ERROR_CREATE_WAR_FILE, deploymentName))); //$NON-NLS-1$
 					}
 
 					CloudFoundryPlugin.trace("War file " + warFile.getName() + " created"); //$NON-NLS-1$ //$NON-NLS-2$
@@ -306,14 +310,21 @@ public class StartOperation extends RestartOperation {
 			}
 			else {
 				throw CloudErrorUtil
+				//2015.07.31 added by ohdoking 
+				.toCoreException(NLS.bind(Messages.StartOperation_ERROR_CREATE_ARCHIVE_FILE, appModule.getDeploymentInfo().getDeploymentName())
+); //$NON-NLS-1$
+/*				throw CloudErrorUtil
 						.toCoreException("Failed to deploy application " + appModule.getDeploymentInfo().getDeploymentName() + //$NON-NLS-1$
 								" since no deployable war or application archive file was generated."); //$NON-NLS-1$
-			}
+*/			}
 		}
 		catch (IOException e) {
-			throw new CoreException(CloudFoundryPlugin.getErrorStatus("Failed to deploy application " + //$NON-NLS-1$ 
+			//2015.07.31 added by ohdoking 
+			throw new CoreException(CloudFoundryPlugin.getErrorStatus(NLS.bind(Messages.StartOperation_ERROR_DEPLOY_APPLICATION, appModule.getDeploymentInfo().getDeploymentName(),e.getMessage())
+, e)); //$NON-NLS-1$
+/*			throw new CoreException(CloudFoundryPlugin.getErrorStatus("Failed to deploy application " + //$NON-NLS-1$ 
 					appModule.getDeploymentInfo().getDeploymentName() + " due to " + e.getMessage(), e)); //$NON-NLS-1$
-		}
+*/		}
 
 	}
 }

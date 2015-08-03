@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -30,6 +30,7 @@ import java.util.Map.Entry;
 import org.apache.commons.io.IOUtils;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IStatus;
+import org.eclipse.osgi.util.NLS;
 
 /**
  * Launches a native process that blocks the current thread it is launched from
@@ -53,7 +54,9 @@ public abstract class ProcessLauncher {
 			List<String> processArguments = getProcessArguments();
 
 			if (processArguments == null || processArguments.isEmpty()) {
-				throw new CoreException(getErrorStatus("No process arguments were found")); //$NON-NLS-1$
+//				throw new CoreException(getErrorStatus("No process arguments were found")); //$NON-NLS-1$
+				//2015.07.31 added by ohdoking 
+				throw new CoreException(getErrorStatus(Messages.ProcessLauncher_ERROR_FIND_PROCESS_ARGUMENT)); 
 			}
 			else {
 
@@ -73,7 +76,9 @@ public abstract class ProcessLauncher {
 				p = processBuilder.start();
 
 				if (p == null) {
-					throw new CoreException(getErrorStatus("No process was created.")); //$NON-NLS-1$
+//					throw new CoreException(getErrorStatus("No process was created.")); //$NON-NLS-1$
+					//2015.07.31 added by ohdoking 
+					throw new CoreException(getErrorStatus(Messages.ProcessLauncher_ERROR_CREATE_PROCESS));
 				}
 				else {
 
@@ -89,7 +94,9 @@ public abstract class ProcessLauncher {
 						throw new CoreException(getErrorStatus(errorBuffer.toString()));
 					}
 					else if (p.exitValue() != 0) {
-						throw new CoreException(getErrorStatus("process exit value: " + p.exitValue())); //$NON-NLS-1$
+//						throw new CoreException(getErrorStatus("process exit value: " + p.exitValue())); //$NON-NLS-1$
+						//2015.07.31 added by ohdoking 
+						throw new CoreException(getErrorStatus(NLS.bind(Messages.ProcessLauncher_EXIT_VALUE, p.exitValue()))); 
 					}
 				}
 			}
@@ -141,7 +148,10 @@ public abstract class ProcessLauncher {
 	}
 
 	protected IStatus getErrorStatus(String body, Exception e) {
-		String errorMessage = "Failure when launching " + getLaunchName() + " due to: " + body; //$NON-NLS-1$ //$NON-NLS-2$
+//		String errorMessage = "Failure when launching " + getLaunchName() + " due to: " + body; //$NON-NLS-1$ //$NON-NLS-2$
+		//2015.07.31 added by ohdoking 
+		String errorMessage = NLS.bind(Messages.ProcessLauncher_ERROR_LAUNCHING,getLaunchName());
+
 		return e != null ? CloudFoundryPlugin.getErrorStatus(errorMessage, e) : CloudFoundryPlugin
 				.getErrorStatus(errorMessage);
 	}
@@ -179,7 +189,9 @@ public abstract class ProcessLauncher {
 				}
 			}
 			catch (IOException e) {
-				CloudFoundryPlugin.logError("Error while reading input from process for: " + processName, e); //$NON-NLS-1$
+//				CloudFoundryPlugin.logError("Error while reading input from process for: " + processName, e); //$NON-NLS-1$
+				//2015.07.31 added by ohdoking 
+				CloudFoundryPlugin.logError(NLS.bind(Messages.ProcessLauncher_ERROR_READING, processName), e);
 			}
 			finally {
 				if (processInput != null) {

@@ -51,7 +51,9 @@ public abstract class UpdateMappingCommand extends ModuleCommand {
 			job.schedule();
 		}
 		else {
-			CloudFoundryPlugin.logError("No operation resolved to run in this action"); //$NON-NLS-1$
+//			CloudFoundryPlugin.logError("No operation resolved to run in this action"); //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			CloudFoundryPlugin.logError(Messages.UpdateMappingCommand_ERROR_RESOLVE_OPERATION); //$NON-NLS-1$
 		}
 	}
 

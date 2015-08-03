@@ -20,6 +20,7 @@ package org.cloudfoundry.ide.eclipse.server.ui.internal.actions;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryApplicationModule;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
 
@@ -33,10 +34,14 @@ public abstract class ModuleCommand extends BaseCommandHandler {
 		CloudFoundryApplicationModule appModule = cloudServer != null && selectedModule != null ? cloudServer
 				.getExistingCloudModule(selectedModule) : null;
 		if (selectedServer == null) {
-			CloudFoundryPlugin.logError("No Cloud Foundry server instance available to run the selected action."); //$NON-NLS-1$
+//			CloudFoundryPlugin.logError("No Cloud Foundry server instance available to run the selected action."); //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			CloudFoundryPlugin.logError(Messages.ModuleCommand_ERROR_EXIST_SERVER_INSTANCE); //$NON-NLS-1$
 		}
 		else if (appModule == null) {
-			CloudFoundryPlugin.logError("No Cloud module resolved for the given selection."); //$NON-NLS-1$
+			//CloudFoundryPlugin.logError("No Cloud module resolved for the given selection."); //$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			CloudFoundryPlugin.logError(Messages.ModuleCommand_ERROR_RESOLVE_MODULE); //$NON-NLS-1$
 		}
 		else {
 			run(appModule, cloudServer);

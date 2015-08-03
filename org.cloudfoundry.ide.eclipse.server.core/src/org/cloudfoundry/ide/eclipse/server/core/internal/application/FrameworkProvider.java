@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -20,8 +20,10 @@
 package org.cloudfoundry.ide.eclipse.server.core.internal.application;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
+import org.cloudfoundry.ide.eclipse.server.core.internal.Messages;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
+import org.eclipse.osgi.util.NLS;
 
 /**
  * 
@@ -62,9 +64,13 @@ public class FrameworkProvider<T> {
 			try {
 				Object object = configurationElement.createExecutableExtension(CLASS_ELEMENT);
 				if (object == null) {
-					CloudFoundryPlugin
+					/*CloudFoundryPlugin
 							.logError("No delegate class found. Must implement a delegate class. See extension point: " //$NON-NLS-1$
 									+ extensionPointID + " for more details."); //$NON-NLS-1$
+*/					
+					//2015.07.31 added by ohdoking 
+					CloudFoundryPlugin
+					.logError(NLS.bind(Messages.FrameworkProvider_ERROR_NON_DELEGATE, extensionPointID));
 				}
 				else {
 					delegate = (T) object;

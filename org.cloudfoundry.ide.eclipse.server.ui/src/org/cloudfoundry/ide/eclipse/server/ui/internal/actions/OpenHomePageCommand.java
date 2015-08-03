@@ -91,10 +91,14 @@ public class OpenHomePageCommand extends BaseCommandHandler {
 
 								if (dialog.open() != Window.OK) { 	
 									if (dialog.getReturnCode() == Window.CANCEL){
-										CloudFoundryPlugin.logWarning("User pressed cancel on selection dialog"); //$NON-NLS-1$
+//										CloudFoundryPlugin.logWarning("User pressed cancel on selection dialog"); //$NON-NLS-1$
+										//2015.07.31 added by ohdoking 
+										CloudFoundryPlugin.logWarning(Messages.OpenHomePageCommand_PRESS_CANCEL); //$NON-NLS-1$
 										return null;
 									}
-									CloudFoundryPlugin.logError(("Failed to open the Open Home Page selection dialog")); //$NON-NLS-1$
+//									CloudFoundryPlugin.logError(("Failed to open the Open Home Page selection dialog")); //$NON-NLS-1$
+									//2015.07.31 added by ohdoking 
+									CloudFoundryPlugin.logError((Messages.OpenHomePageCommand_ERROR_OEPN_DIALOG)); //$NON-NLS-1$
 									return null;
 								}
 
@@ -114,12 +118,16 @@ public class OpenHomePageCommand extends BaseCommandHandler {
 							CloudUiUtil.openUrl(homePageUrl.toExternalForm());
 						}
 						else {
-							CloudFoundryPlugin.logError("homePageUrl is null, unable to launch the Home Page URL"); //$NON-NLS-1$
+//							CloudFoundryPlugin.logError("homePageUrl is null, unable to launch the Home Page URL"); //$NON-NLS-1$
+							//2015.07.31 added by ohdoking 
+							CloudFoundryPlugin.logError(Messages.OpenHomePageCommand_NULL_HOMEPAGE); //$NON-NLS-1$
 							return null;
 						}
 					}
 					catch (Exception e) {
-						CloudFoundryPlugin.logError("Cannot launch the home page URL", e); //$NON-NLS-1$
+//						CloudFoundryPlugin.logError("Cannot launch the home page URL", e); //$NON-NLS-1$
+						//2015.07.31 added by ohdoking 
+						CloudFoundryPlugin.logError(Messages.OpenHomePageCommand_LAUNCH_HOMEPAGE, e); //$NON-NLS-1$
 						return null;
 					}					
 				}

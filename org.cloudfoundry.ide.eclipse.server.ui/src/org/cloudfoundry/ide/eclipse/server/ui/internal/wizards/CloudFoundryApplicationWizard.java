@@ -32,6 +32,7 @@ import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.runtime.Assert;
 import org.eclipse.jface.wizard.IWizardPage;
 import org.eclipse.jface.wizard.Wizard;
+import org.eclipse.osgi.util.NLS;
 
 /**
  * Prompts a user for application deployment information. Any information set by
@@ -103,12 +104,16 @@ public class CloudFoundryApplicationWizard extends Wizard {
 		else {
 
 			String moduleID = module != null && module.getModuleType() != null ? module.getModuleType().getId()
-					: "Unknown module type."; //$NON-NLS-1$
+//					: "Unknown module type."; //$NON-NLS-1$
+					//2015.07.31 added by ohdoking 
+					: Messages.CloudFoundryApplicationWizard_UNKNOWN_MODULE_TYPE; //$NON-NLS-1$
 
 			CloudFoundryPlugin
-					.logError("No application deployment wizard pages found for application type: " //$NON-NLS-1$
-							+ moduleID
-							+ ". Unable to complete application deployment. Check that the application type is registered in the Cloud Foundry application framework."); //$NON-NLS-1$
+/*			.logError("No application deployment wizard pages found for application type: " //$NON-NLS-1$
+					+ moduleID
+					+ ". Unable to complete application deployment. Check that the application type is registered in the Cloud Foundry application framework."); //$NON-NLS-1$
+*/					//2015.07.31 added by ohdoking 
+			.logError(NLS.bind(Messages.CloudFoundryApplicationWizard_ERROR_FIND_DEPLOY_WIZARD_PAGE, moduleID)); 
 		}
 
 	}

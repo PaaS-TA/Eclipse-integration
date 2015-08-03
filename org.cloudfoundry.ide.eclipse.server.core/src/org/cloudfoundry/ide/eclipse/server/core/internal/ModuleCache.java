@@ -271,7 +271,9 @@ public class ModuleCache {
 						.getDefault()
 						.getLog()
 						.log(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
-								"Failed to update application mappings", e)); //$NON-NLS-1$
+//								"Failed to update application mappings", e)); //$NON-NLS-1$
+								//2015.07.31 added by ohdoking 
+								Messages.ModuleCache_ERROR_REFRESH_APPLICATION_MAPPING, e)); //$NON-NLS-1$
 			}
 		}
 
@@ -400,7 +402,8 @@ public class ModuleCache {
 						.getDefault()
 						.getLog()
 						.log(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
-								"Failed to remove application mappings", e)); //$NON-NLS-1$
+//								"Failed to remove application mappings", e)); //$NON-NLS-1$
+								Messages.ModuleCache_ERROR_DELETE_APPLICATION_MAPPING, e)); //$NON-NLS-1$
 			}
 		}
 	}

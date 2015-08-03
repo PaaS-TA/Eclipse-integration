@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -117,13 +117,19 @@ public class CloudUtil {
 
 			IStatus[] status = publishZip(allResources, warFile, filterInResources, monitor);
 			merge(result, status);
-			throwException(result, "Publishing of : " + module.getName() + " failed"); //$NON-NLS-1$ //$NON-NLS-2$
+///			throwException(result, "Publishing of : " + module.getName() + " failed"); //$NON-NLS-1$ //$NON-NLS-2$
+			//2015.07.31 added by ohdoking 
+			throwException(result, NLS.bind(Messages.CloudUtil_ERROR_DEPLOY, module.getName())); //$NON-NLS-1$ //$NON-NLS-2$
 
 			return warFile;
 		}
 		catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID, 
+/*			throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID, 
 					"Failed to create war file: "+ e.getMessage(), e)); //$NON-NLS-1$
+*/			
+			//2015.07.31 added by ohdoking 
+			throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID, 
+					NLS.bind(Messages.CloudUtil_ERROR_CREATE_WAR_FILE, e.getMessage()), e)); //$NON-NLS-1$
 		}
 	}
 
@@ -198,14 +204,21 @@ public class CloudUtil {
 			IStatus[] status = helper.publishZip(newResources.toArray(new IModuleResource[0]),
 					new Path(targetFile.getAbsolutePath()), monitor);
 			merge(result, status);
-			throwException(result, "Publishing of " + modules[0].getName() + " failed"); //$NON-NLS-1$ //$NON-NLS-2$
+//			throwException(result, "Publishing of " + modules[0].getName() + " failed"); //$NON-NLS-1$ //$NON-NLS-2$
+			//2015.07.31 added by ohdoking 
+			throwException(result, NLS.bind(Messages.CloudUtil_ERROR_DEPLOY, modules[0].getName())); //$NON-NLS-1$ //$NON-NLS-2$
 
 			return targetFile;
 		}
 		catch (IOException e) {
-			throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
+/*			throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
 					"Failed to create war file: " + e.getMessage(), e)); //$NON-NLS-1$
+*/			//2015.07.31 added by ohdoking 
+			throw new CoreException(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID, 
+					NLS.bind(Messages.CloudUtil_ERROR_CREATE_WAR_FILE, e.getMessage()), e)); //$NON-NLS-1$
 		}
+		
+
 
 	}
 

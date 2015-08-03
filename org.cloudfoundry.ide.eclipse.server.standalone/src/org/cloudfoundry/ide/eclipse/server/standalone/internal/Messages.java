@@ -61,6 +61,13 @@ public class Messages extends NLS {
 	public static String ProjectExplorerMenuFactory_LABEL_CONVERT_TOOLTIP;
 	public static String ProjectExplorerMenuFactory_LABEL_REMOVE_TEXT;
 	public static String ProjectExplorerMenuFactory_LABEL_REMOVE_TOOLTIP;
+	
+	
+	// 2015.07.30 added by ohdoking
+	
+	public static String JavaCloudFoundryArchiver_ERROR_PACKAGE_APPLICATION;
+	public static String StandaloneFacetHandler_ERROR_INSTALL_STANDALONE;
+
 
 	static {
 		// initialize resource bundle

@@ -64,7 +64,9 @@ public class ShowConsoleEditorAction extends Action {
 				}
 				else {
 					return CloudFoundryPlugin
-							.getErrorStatus("Internal Error: No Cloud Foundry console callback available. Unable to refresh console contents."); //$NON-NLS-1$
+//							.getErrorStatus("Internal Error: No Cloud Foundry console callback available. Unable to refresh console contents."); //$NON-NLS-1$
+							//2015.07.31 added by ohdoking 
+							.getErrorStatus(Messages.ShowConsoleEditorAction_ERROR_AVAILABLE_CONSOLE_CALLBACK); //$NON-NLS-1$
 				}
 			}
 

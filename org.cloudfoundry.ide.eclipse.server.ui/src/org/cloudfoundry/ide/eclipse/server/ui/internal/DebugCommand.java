@@ -34,6 +34,7 @@ import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.core.ILaunchManager;
 import org.eclipse.debug.ui.DebugUITools;
 import org.eclipse.debug.ui.IDebugUIConstants;
+import org.eclipse.osgi.util.NLS;
 
 /**
  * Launches an application in debug mode. Also allows a debugger connection to
@@ -101,7 +102,9 @@ public class DebugCommand {
 		final DebugCommand command = getCommand(cloudServer, appModule);
 
 		if (command != null) {
-			Job job = new Job("Launching debug - " + appModule.getDeployedApplicationName()) { //$NON-NLS-1$
+//			Job job = new Job("Launching debug - " + appModule.getDeployedApplicationName()) { //$NON-NLS-1$
+			//2015.08.01 added by ohdoking 
+			Job job = new Job(NLS.bind(Messages.DebugCommand_LAUNCHING_DEBUG, appModule.getDeployedApplicationName())) { 
 
 				protected IStatus run(IProgressMonitor monitor) {
 

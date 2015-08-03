@@ -79,11 +79,16 @@ public class MapToProjectOperation implements ICloudFoundryOperation {
 
 	public void map(IProject project, IProgressMonitor monitor) throws CoreException {
 		if (project == null || !project.isAccessible()) {
-			throw CloudErrorUtil.toCoreException("No accessible project specified. Unable to map module to project.");//$NON-NLS-1$
+//			throw CloudErrorUtil.toCoreException("No accessible project specifid. Unable to map module to project.");//$NON-NLS-1$
+			//2015.07.31 added by ohdoking 
+			throw CloudErrorUtil.toCoreException(Messages.MapToProjectOperation_ERROR_SPECIFY_ACCESSIBLE_PROJECT);//$NON-NLS-1$
 		}
 		if (appModule == null) {
+/*			throw CloudErrorUtil
+			.toCoreException("No Cloud module specified. Unable to map to project: " + project.getName()); //$NON-NLS-1$
+*/			//2015.07.31 added by ohdoking 
 			throw CloudErrorUtil
-					.toCoreException("No Cloud module specified. Unable to map to project: " + project.getName()); //$NON-NLS-1$
+					.toCoreException(NLS.bind(Messages.MapToProjectOperation_ERROR_SPECIFY_CLOUD_MODULE, project.getName())); //$NON-NLS-1$
 		}
 
 		ModuleCache moduleCache = CloudFoundryPlugin.getModuleCache();
@@ -91,8 +96,11 @@ public class MapToProjectOperation implements ICloudFoundryOperation {
 
 		// if it is being deployed, do not perform remap
 		if (data.isUndeployed(appModule.getLocalModule())) {
+/*			throw CloudErrorUtil
+			.toCoreException("Unable to unmap module. It is currently being published. Please wait until publish operation is complete before remapping."); //$NON-NLS-1$
+*/			//2015.07.31 added by ohdoking 
 			throw CloudErrorUtil
-					.toCoreException("Unable to unmap module. It is currently being published. Please wait until publish operation is complete before remapping."); //$NON-NLS-1$
+					.toCoreException(Messages.MapToProjectOperation_ERROR_UNMAP_MODULE); //$NON-NLS-1$
 		}
 
 		data.tagForReplace(appModule);
@@ -112,13 +120,19 @@ public class MapToProjectOperation implements ICloudFoundryOperation {
 		final IModule[] modules = ServerUtil.getModules(project);
 
 		if (modules == null || modules.length == 0) {
+/*			throw CloudErrorUtil
+			.toCoreException("Unable to create module for " + project.getName() + ". Failed to map to " + appModule.getDeployedApplicationName()); //$NON-NLS-1$ //$NON-NLS-2$
+*/			//2015.07.31 added by ohdoking 
 			throw CloudErrorUtil
-					.toCoreException("Unable to create module for " + project.getName() + ". Failed to map to " + appModule.getDeployedApplicationName()); //$NON-NLS-1$ //$NON-NLS-2$
+					.toCoreException(NLS.bind(Messages.MapToProjectOperation_ERROR_CREATE_MODULE_FAIL_MAP, project.getName(),appModule.getDeployedApplicationName())); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 
 		if (ServerUtil.containsModule(server, modules[0], monitor)) {
+/*			throw CloudErrorUtil
+			.toCoreException("Unable to create module for " + project.getName() + ". Module already exists. Failed to map to " + appModule.getDeployedApplicationName()); //$NON-NLS-1$ //$NON-NLS-2$
+*/			//2015.07.31 added by ohdoking 
 			throw CloudErrorUtil
-					.toCoreException("Unable to create module for " + project.getName() + ". Module already exists. Failed to map to " + appModule.getDeployedApplicationName()); //$NON-NLS-1$ //$NON-NLS-2$
+					.toCoreException(NLS.bind(Messages.MapToProjectOperation_ERROR_CREATE_MODULE_ALREADY_EXIST, project.getName(),appModule.getDeployedApplicationName())); //$NON-NLS-1$ //$NON-NLS-2$
 		}
 
 		IModule[] add = new IModule[] { modules[0] };

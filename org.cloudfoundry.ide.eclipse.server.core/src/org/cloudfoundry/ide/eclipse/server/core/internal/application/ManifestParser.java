@@ -266,10 +266,14 @@ public class ManifestParser {
 
 		Object applicationsObj = results.get(APPLICATIONS_PROP);
 		if (!(applicationsObj instanceof List<?>)) {
-			throw CloudErrorUtil
+			/*throw CloudErrorUtil
 					.toCoreException("Expected a top-level list of applications in: " //$NON-NLS-1$
 							+ relativePath
 							+ ". Unable to continue parsing manifest values. No manifest values will be loaded into the application deployment info."); //$NON-NLS-1$
+*/
+			//2015.07.31 added by ohdoking 
+			throw CloudErrorUtil
+			.toCoreException(NLS.bind(Messages.ManifestParser_EXPECT_TOP_LEVEL_LIST, relativePath)); 
 		}
 
 		List<?> applicationsList = (List<?>) applicationsObj;
@@ -286,10 +290,13 @@ public class ManifestParser {
 			Object mapObj = applicationsList.get(0);
 			application = (mapObj instanceof Map<?, ?>) ? (Map<?, ?>) mapObj : null;
 			if (application == null) {
-				errorMessage = "Expected a map of application properties in: " //$NON-NLS-1$
+				/*errorMessage = "Expected a map of application properties in: " //$NON-NLS-1$
 						+ relativePath
 						+ ". Unable to continue parsing manifest values. No manifest values will be loaded into the application deployment info."; //$NON-NLS-1$
-
+				*/
+				
+				//2015.07.31 added by ohdoking 
+				errorMessage = NLS.bind(Messages.ManifestParser_EXPECT_APPLICATION_PROPERTY_MAP, relativePath);
 			}
 		}
 		else {
@@ -523,9 +530,17 @@ public class ManifestParser {
 					memoryStringVal = memoryStringVal.substring(0, gIndex);
 				}
 				else if (gIndex == 0) {
-					CloudFoundryPlugin.logError("Failed to read memory value in manifest file: " + relativePath //$NON-NLS-1$
+					/*CloudFoundryPlugin.logError("Failed to read memory value in manifest file: " + relativePath //$NON-NLS-1$
 							+ " for: " + appModule.getDeployedApplicationName() + ". Invalid memory: " //$NON-NLS-1$ //$NON-NLS-2$
-							+ memoryStringVal);
+							+ memoryStringVal);*/
+					
+					
+					//2015.07.31 added by ohdoking 
+					String[] tempString = new String[2];
+					tempString[0] = relativePath;
+					tempString[1] = appModule.getDeployedApplicationName();
+					tempString[2] = memoryStringVal;
+					CloudFoundryPlugin.logError(NLS.bind(Messages.ManifestParser_FAIL_READ_MEMORY,tempString) );
 				}
 
 				try {
@@ -533,8 +548,16 @@ public class ManifestParser {
 				}
 				catch (NumberFormatException e) {
 					// Log an error but do not stop the parsing
-					CloudFoundryPlugin.logError("Failed to parse memory from manifest file: " + relativePath + " for: " //$NON-NLS-1$ //$NON-NLS-2$
+					/*CloudFoundryPlugin.logError("Failed to parse memory from manifest file: " + relativePath + " for: " //$NON-NLS-1$ //$NON-NLS-2$
 							+ appModule.getDeployedApplicationName() + " due to: " + e.getMessage()); //$NON-NLS-1$
+*/					
+					//2015.07.31 added by ohdoking 
+					String[] tempString = new String[2];
+					tempString[0] = relativePath;
+					tempString[1] = appModule.getDeployedApplicationName();
+					tempString[2] = e.getMessage();
+					
+					CloudFoundryPlugin.logError(NLS.bind(Messages.ManifestParser_FAIL_PARSE_MEMORY, tempString)); 
 				}
 			}
 		}
@@ -586,8 +609,11 @@ public class ManifestParser {
 					return (Map<Object, Object>) results;
 				}
 				else {
-					throw CloudErrorUtil.toCoreException("Expected a map of values for manifest file: " + relativePath //$NON-NLS-1$
+/*					throw CloudErrorUtil.toCoreException("Expected a map of values for manifest file: " + relativePath //$NON-NLS-1$
 							+ ". Unable to load manifest content.  Actual results: " + results); //$NON-NLS-1$
+							
+*/					//2015.07.31 added by ohdoking 
+					throw CloudErrorUtil.toCoreException(NLS.bind(Messages.ManifestParser_EXPECT_MANIFEST_FILE, relativePath, results)); 
 				}
 
 			}
@@ -682,8 +708,11 @@ public class ManifestParser {
 				applicationsList = (List<Map<Object, Object>>) applicationsObj;
 			}
 			else {
-				throw CloudErrorUtil.toCoreException("Expected a top-level list of applications in: " + relativePath //$NON-NLS-1$
+			/*	throw CloudErrorUtil.toCoreException("Expected a top-level list of applications in: " + relativePath //$NON-NLS-1$
 						+ ". Unable to continue writing manifest values."); //$NON-NLS-1$
+*/
+				//2015.07.31 added by ohdoking 
+				throw CloudErrorUtil.toCoreException(NLS.bind(Messages.ManifestParser_EXPECT_TOP_LEVEL_LIST_CAN_WRITE, relativePath)); 
 			}
 
 			Map<Object, Object> applicationWithSameName = null;
@@ -835,17 +864,24 @@ public class ManifestParser {
 
 			subProgress.worked(1);
 			if (manifestValue == null) {
-				throw CloudErrorUtil.toCoreException("Manifest map for " + appModule.getDeployedApplicationName() //$NON-NLS-1$
+				/*throw CloudErrorUtil.toCoreException("Manifest map for " + appModule.getDeployedApplicationName() //$NON-NLS-1$
 						+ " contained values but yaml parser failed to serialise the map. : " + deploymentInfoYaml); //$NON-NLS-1$
+*/
+
+				//2015.07.31 added by ohdoking 
+				throw CloudErrorUtil.toCoreException(NLS.bind(Messages.ManifestParser_CANT_SERIALIZE,  appModule.getDeployedApplicationName(),deploymentInfoYaml));
 			}
 
 			OutputStream outStream = null;
 			try {
 				outStream = getOutStream();
 				if (outStream == null) {
-					throw CloudErrorUtil.toCoreException("No output stream could be opened to: " + relativePath //$NON-NLS-1$
+					/*throw CloudErrorUtil.toCoreException("No output stream could be opened to: " + relativePath //$NON-NLS-1$
 							+ ". Unable to write changes to the application's manifest file for: " //$NON-NLS-1$
-							+ appModule.getDeployedApplicationName());
+							+ appModule.getDeployedApplicationName());*/
+					
+					//2015.07.31 added by ohdoking 
+					throw CloudErrorUtil.toCoreException(NLS.bind(Messages.ManifestParser_CANT_OPEN_OUTPUT_STREAM, relativePath,appModule.getDeployedApplicationName()));
 				}
 
 				outStream.write(manifestValue.getBytes());

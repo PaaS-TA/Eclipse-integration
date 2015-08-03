@@ -240,7 +240,9 @@ public class CloudFoundryApplicationsEditorPage extends ServerEditorPart {
 
 			if (event.getServer() == null) {
 				CloudFoundryPlugin
-						.logError("Internal error: unable to refresh editor. No Cloud server specified in the server event."); // $NON-NLS-1$
+//						.logError("Internal error: unable to refresh editor. No Cloud server specified in the server event."); // $NON-NLS-1$
+				//2015.07.31 added by ohdoking 
+						.logError(Messages.CloudFoundryApplicationsEditorPage_ERROR_REFRESH_EDITOR); // $NON-NLS-1$
 				return;
 			}
 			// Do not refresh if not from the same server

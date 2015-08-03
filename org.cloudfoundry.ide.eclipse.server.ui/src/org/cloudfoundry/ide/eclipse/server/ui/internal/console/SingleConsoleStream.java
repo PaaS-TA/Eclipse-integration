@@ -23,7 +23,9 @@ import java.io.IOException;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.core.internal.log.LogContentType;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.runtime.CoreException;
+import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.ui.console.ConsolePlugin;
 import org.eclipse.ui.console.IConsole;
@@ -90,7 +92,8 @@ public class SingleConsoleStream extends ConsoleStream {
 				outputStream.close();
 			}
 			catch (IOException e) {
-				CloudFoundryPlugin.logError("Failed to close console output stream due to: " + e.getMessage(), e); //$NON-NLS-1$
+//				CloudFoundryPlugin.logError("Failed to close console output stream due to: " + e.getMessage(), e); //$NON-NLS-1$
+				CloudFoundryPlugin.logError(NLS.bind(Messages.SingleConsoleStream_ERROR_CLOSE_CONSOLE_OUTPUT_STREAM, e.getMessage()), e); //$NON-NLS-1$
 			}
 		}
 		this.console = null;

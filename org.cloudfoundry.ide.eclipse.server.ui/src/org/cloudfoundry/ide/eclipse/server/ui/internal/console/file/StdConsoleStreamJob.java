@@ -20,11 +20,13 @@
 package org.cloudfoundry.ide.eclipse.server.ui.internal.console.file;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
+import org.eclipse.osgi.util.NLS;
 
 class StdConsoleStreamJob extends Job implements IConsoleJob {
 
@@ -46,7 +48,9 @@ class StdConsoleStreamJob extends Job implements IConsoleJob {
 			}
 			catch (CoreException e) {
 				CloudFoundryPlugin.logError(
-						"Failed to write message to Cloud Foundry console due to - " + e.getMessage(), e); //$NON-NLS-1$
+//						"Failed to write message to Cloud Foundry console due to - " + e.getMessage(), e); //$NON-NLS-1$
+						//2015.07.31 added by ohdoking 
+						NLS.bind(Messages.StdConsoleStreamJob_ERROR_WRITE_CONSOLE, e.getMessage()), e); //$NON-NLS-1$
 			}
 		}
 

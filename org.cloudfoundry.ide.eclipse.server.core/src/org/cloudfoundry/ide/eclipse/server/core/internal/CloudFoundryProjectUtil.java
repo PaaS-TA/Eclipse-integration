@@ -25,6 +25,7 @@ import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
+import org.eclipse.osgi.util.NLS;
 
 public class CloudFoundryProjectUtil {
 
@@ -78,7 +79,9 @@ public class CloudFoundryProjectUtil {
 				}
 			}
 			catch (CoreException e) {
-				CloudFoundryPlugin.logError("Error getting Java project for project '" + project.getName() + "'", e); //$NON-NLS-1$ //$NON-NLS-2$
+//				CloudFoundryPlugin.logError("Error getting Java project for project '" + project.getName() + "'", e); //$NON-NLS-1$ //$NON-NLS-2$
+				//2015.07.31 added by ohdoking
+				CloudFoundryPlugin.logError(NLS.bind(Messages.CloudFoundryProjectUtil_ERROR_GET_JAVA_PROJECT,project.getName()), e); //$NON-NLS-1$ //$NON-NLS-2$
 			}
 		}
 		return null;

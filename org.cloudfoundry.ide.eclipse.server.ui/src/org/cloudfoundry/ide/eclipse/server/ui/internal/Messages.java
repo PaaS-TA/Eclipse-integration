@@ -932,6 +932,79 @@ public class Messages extends NLS {
 	public static String COMMONTXT_PROVIDER;
 	public static String COMMONTXT_VERSION;
 	public static String COMMONTXT_TUNNEL;
+	
+	
+	
+	
+	// 2015.07.30 added by ohdoking //
+	
+	public static String AbstractCloudFoundryServerAction_ERROR_NO_INSTANCE;
+	public static String AbstractMenuContributionFactory_ERROR_RETRIEVE_MENU_SERVICE;
+	public static String AddServicesToApplicationAction_ADDING_SERVICE;
+	public static String CloneServerCommand_ERROR_AVAILABLE_SERVER_INSTANCE;
+	public static String CloneServerCommand_CLONNING_SERVER;
+	public static String CloneServerCommand_ERROR_FIND_ACTIVE_SHELL;
+	public static String DebugApplicationEditorAction_CONNETING_DEBUGGER;
+	public static String DeleteServicesAction_DELETING_SERVICE;
+	public static String DisconnectCommand_DISCONNECT_SERVER;
+	public static String MapToProjectOperation_ERROR_SPECIFY_ACCESSIBLE_PROJECT;
+	public static String MapToProjectOperation_ERROR_SPECIFY_CLOUD_MODULE;
+	public static String MapToProjectOperation_ERROR_UNMAP_MODULE;
+	public static String MapToProjectOperation_ERROR_CREATE_MODULE_FAIL_MAP;
+	public static String MapToProjectOperation_ERROR_CREATE_MODULE_ALREADY_EXIST;
+	public static String ModuleCommand_ERROR_EXIST_SERVER_INSTANCE;
+	public static String ModuleCommand_ERROR_RESOLVE_MODULE;
+	public static String OpenHomePageCommand_PRESS_CANCEL;
+	public static String OpenHomePageCommand_ERROR_OEPN_DIALOG;
+	public static String OpenHomePageCommand_NULL_HOMEPAGE;
+	public static String OpenHomePageCommand_LAUNCH_HOMEPAGE;
+	public static String PushModuleCommand_ERROR_PUSH_MODULE;
+	public static String PushModuleCommand_ERROR_EXIST_SERVER_INSTANCE;
+	public static String RemapModuleProjectCommand_REMAP_PROJECT;
+	public static String RemoveServicesFromApplicationAction_UNBINDING_SERVICE;
+	public static String ServiceToApplicationsBindingAction_ERROR_LAUNCHING_WIZARD;
+	public static String ShowConsoleEditorAction_ERROR_AVAILABLE_CONSOLE_CALLBACK;
+	public static String ShowConsoleViewerCommand_ERROR_EXIST_SERVER_INSTANCE;
+	public static String TerminateDebugEditorAction_TERMINATING_DEBUG_CONNECTION;
+	public static String UpdateApplicationMemoryAction_UPDATING_APPLICATION_MEMORY_LIMIT;
+	public static String UpdateInstanceCountAction_UPDATING_INSTANCE_COUNT;
+	public static String UpdateMappingCommand_ERROR_RESOLVE_OPERATION;
+	public static String UpdatePasswordOperation_ERROP_OPEN_SHELL;
+	public static String UpdateRestartModuleCommand_ERROR_UPDATE_AND_RESTART_MODULE;
+	public static String UpdateRestartModuleCommand_ERROR_EXIST_SERVER_INSTANCE;
+	public static String BaseConsoleStream_ERROR_CONSOLE_OUTPUT_STREAM;
+	public static String FileConsoleManager_ERROR_EXIST_CONTENT_TYPE;
+	public static String StdConsoleStreamJob_ERROR_WRITE_CONSOLE;
+	public static String SingleConsoleStream_ERROR_CLOSE_CONSOLE_OUTPUT_STREAM;
+	public static String ApplicationMasterPart_DEPLOYING_APPLICATION;
+	public static String CloudFoundryApplicationsEditorPage_ERROR_REFRESH_EDITOR;
+	public static String ManageCloudDialog_ERROR_DELETE_SERVER;
+	public static String ApplicationWizardRegisty_ERROR_LOAD_APPLICATION_WIZARD_PROVIDER;
+	public static String ApplicationWizardRegistry_ERROR_LOAD_APPLICATION_WIZARD_PROVIDER_NULL_ID;
+	public static String CloudFoundryApplicationWizard_UNKNOWN_MODULE_TYPE;
+	public static String CloudFoundryApplicationWizard_ERROR_FIND_DEPLOY_WIZARD_PAGE;
+	public static String CloudFoundryServerWizardFragment_ERROR_CREATE_SERVER_WORKING_COPY;
+	public static String CloudFoundryServiceWizardIconProviderRegistry_ERROR_LOAD_SERVICE_ICON_EXTENSION_PROVIDER;
+	public static String CloudFoundryServiceWizardIconProviderRegistry_INVALID_SERVER_ICON_ENTRY;
+	public static String ApplicationDeploymentUIHandler_ERROR_OPEN_DEPLOY_WIZARD;
+	public static String ApplicationDeploymentUIHandler_ERROR_DEOPLOY_APPLICATION;
+	public static String CloudFoundryUiCallback_ERROR_DISPLAY_APPLICATION_CONTENT;
+	public static String CloudUiUtil_UNEXPECT_EXCEPTION;
+	public static String DebugCommand_LAUNCHING_DEBUG;
+	public static String ServerHandler_CREATING_SERVER_CONFIGURATION;
+	public static String ServerHandler_ERROR_FIND_SERVER_TYPE;
+	public static String ServerHandler_DELETING_SERVER_CONFIGURATION;
+	public static String ServerHandler_LAUNCTION;
+	public static String ServerHandler_ERROR_CONTAIN_PROJECT;
+	public static String ServerHandler_ERROR_FIND_RUNTIME;
+	public static String ServerHandler_ERROR_FIND_SERVER;
+	public static String ServerHandler_RESTARTING_SERVER;
+	public static String ServerHandler_WATING_START_SERVER;
+
+	
+	//
+	
+	
 
 	private static final String BUNDLE_NAME = CloudFoundryServerUiPlugin.PLUGIN_ID + ".internal.Messages"; //$NON-NLS-1$
 

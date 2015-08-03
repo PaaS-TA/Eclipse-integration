@@ -467,7 +467,7 @@ public class JavaCloudFoundryArchiver {
 		throw CloudErrorUtil.toCoreException(errorMessage
 				+ " - " //$NON-NLS-1$
 				+ appModule.getDeployedApplicationName()
-				+ ". Unable to package application for deployment."); //$NON-NLS-1$
+				+ Messages.JavaCloudFoundryArchiver_ERROR_PACKAGE_APPLICATION); //$NON-NLS-1$
 	}
 
 	protected void handleApplicationDeploymentFailure() throws CoreException {

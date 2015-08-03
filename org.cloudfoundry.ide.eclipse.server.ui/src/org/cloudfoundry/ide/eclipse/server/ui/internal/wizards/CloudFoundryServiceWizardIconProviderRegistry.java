@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -24,11 +24,13 @@ import java.util.Map;
 
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
 import org.cloudfoundry.ide.eclipse.server.ui.ICloudFoundryServiceWizardIconProvider;
+import org.cloudfoundry.ide.eclipse.server.ui.internal.Messages;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.Platform;
+import org.eclipse.osgi.util.NLS;
 
 public class CloudFoundryServiceWizardIconProviderRegistry {
 
@@ -69,8 +71,10 @@ public class CloudFoundryServiceWizardIconProviderRegistry {
 		IExtensionPoint extensionPoint = Platform.getExtensionRegistry().getExtensionPoint(EXTENSION_POINT);
 
 		if (extensionPoint == null) {
-			CloudFoundryPlugin.logError("Failed to load Cloud Foundry service icon extension providers from: " //$NON-NLS-1$
+/*			CloudFoundryPlugin.logError("Failed to load Cloud Foundry service icon extension providers from: " //$NON-NLS-1$
 					+ EXTENSION_POINT);
+*/			//2015.07.31 added by ohdoking 
+			CloudFoundryPlugin.logError(NLS.bind(Messages.CloudFoundryServiceWizardIconProviderRegistry_ERROR_LOAD_SERVICE_ICON_EXTENSION_PROVIDER, EXTENSION_POINT));
 		}
 		else {
 
@@ -87,7 +91,9 @@ public class CloudFoundryServiceWizardIconProviderRegistry {
 							if(runtimeTypeId != null) {
 								providers.put(runtimeTypeId, provider);
 							} else {
-								CloudFoundryPlugin.logError("Invalid server icon entry from:"+EXTENSION_POINT); //$NON-NLS-1$
+//								CloudFoundryPlugin.logError("Invalid server icon entry from:"+EXTENSION_POINT); //$NON-NLS-1$
+								//2015.07.31 added by ohdoking 
+								CloudFoundryPlugin.logError(NLS.bind(Messages.CloudFoundryServiceWizardIconProviderRegistry_INVALID_SERVER_ICON_ENTRY, EXTENSION_POINT)); //$NON-NLS-1$
 							}
 
 						}

@@ -859,9 +859,12 @@ public class CloudFoundryServer extends ServerDelegate implements IURLProvider {
 				CloudFoundryApplicationModule cloudModule = getCloudModule(module);
 
 				if (cloudModule == null) {
-					CloudFoundryPlugin.logError("Unable to find local Cloud Foundry application module for : " //$NON-NLS-1$
+/*					CloudFoundryPlugin.logError("Unable to find local Cloud Foundry application module for : " //$NON-NLS-1$
 							+ module.getName()
 							+ ". Try refreshing applications or disconnecting and reconnecting to the server."); //$NON-NLS-1$
+*/					
+					//2015.07.31 added by ohdoking 
+					CloudFoundryPlugin.logError(NLS.bind(Messages.CloudFoundryServer_ERROR_FIND_APPLICATION_MODULE, module.getName())); //$NON-NLS-1$
 					continue;
 				}
 
@@ -1194,7 +1197,7 @@ public class CloudFoundryServer extends ServerDelegate implements IURLProvider {
 					.getDefault()
 					.getLog()
 					.log(new Status(IStatus.ERROR, CloudFoundryPlugin.PLUGIN_ID,
-							"Unexpected error while updating modules", e)); //$NON-NLS-1$
+							Messages.CloudFoundryServer_ERROR_WHILE_UPDATING_MODULE, e)); //$NON-NLS-1$
 			return Status.CANCEL_STATUS;
 		}
 		finally {

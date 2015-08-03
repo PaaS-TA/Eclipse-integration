@@ -64,8 +64,11 @@ public class CloudFoundryUiCallback extends CloudFoundryCallback {
 	public void startApplicationConsole(CloudFoundryServer cloudServer, CloudFoundryApplicationModule cloudModule,
 			int showIndex, IProgressMonitor monitor) {
 		if (cloudModule == null || cloudModule.getApplication() == null) {
+			/*CloudFoundryPlugin
+					.logError("No application content to display to the console while starting application in the Cloud Foundry server.");*/ //$NON-NLS-1$
+			//2015.08.01 added by ohdoking 
 			CloudFoundryPlugin
-					.logError("No application content to display to the console while starting application in the Cloud Foundry server."); //$NON-NLS-1$
+			.logError(Messages.CloudFoundryUiCallback_ERROR_DISPLAY_APPLICATION_CONTENT);
 			return;
 		}
 		if (showIndex < 0) {

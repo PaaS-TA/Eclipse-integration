@@ -45,6 +45,7 @@ import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.Job;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jface.action.Action;
+import org.eclipse.jface.action.ActionContributionItem;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.MenuManager;
@@ -298,7 +299,7 @@ public class ApplicationMasterPart extends SectionPart {
 		headerComposite.setLayout(rowLayout);
 		headerComposite.setBackground(null);
 
-		ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT);
+		ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT | SWT.RIGHT);
 		toolBarManager.createControl(headerComposite);
 
 		applicationsViewer = new TableViewer(toolkit.createTable(client, SWT.NONE));
@@ -411,10 +412,14 @@ public class ApplicationMasterPart extends SectionPart {
 				dialog.open();
 			}
 		};
-		toolBarManager.add(addRemoveApplicationAction);
+		ActionContributionItem addRemoveItem = new ActionContributionItem(addRemoveApplicationAction);
+		addRemoveItem.setMode(ActionContributionItem.MODE_FORCE_TEXT);
+		toolBarManager.add(addRemoveItem);
 
 		// Fix for STS-2996. Moved from CloudFoundryApplicationsEditorPage
-		toolBarManager.add(RefreshEditorAction.getRefreshAction(editorPage, null));
+		ActionContributionItem refreshItem = new ActionContributionItem(RefreshEditorAction.getRefreshAction(editorPage, null));
+		refreshItem.setMode(ActionContributionItem.MODE_FORCE_TEXT);
+		toolBarManager.add(refreshItem);
 		toolBarManager.update(true);
 		section.setTextClient(headerComposite);
 
@@ -491,7 +496,7 @@ public class ApplicationMasterPart extends SectionPart {
 		headerComposite.setLayout(rowLayout);
 		headerComposite.setBackground(null);
 
-		ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT);
+		ToolBarManager toolBarManager = new ToolBarManager(SWT.FLAT | SWT.RIGHT);
 		toolBarManager.createControl(headerComposite);
 
 		servicesViewer = new TableViewer(toolkit.createTable(client, SWT.MULTI));
@@ -547,7 +552,9 @@ public class ApplicationMasterPart extends SectionPart {
 				dialog.open();
 			}
 		};
-		toolBarManager.add(addServiceAction);
+		ActionContributionItem addServiceItem = new ActionContributionItem(addServiceAction);
+		addServiceItem.setMode(ActionContributionItem.MODE_FORCE_TEXT);
+		toolBarManager.add(addServiceItem);
 		toolBarManager.update(true);
 		servicesSection.setTextClient(headerComposite);
 

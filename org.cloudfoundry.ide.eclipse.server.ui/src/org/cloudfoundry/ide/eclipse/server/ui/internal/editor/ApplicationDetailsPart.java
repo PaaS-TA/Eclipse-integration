@@ -659,17 +659,40 @@ public class ApplicationDetailsPart extends AbstractFormPart implements IDetails
 		});
 
 		createLabel(client, Messages.ApplicationDetailsPart_TEXT_INSTANCE, SWT.CENTER);
+		
+		Composite instanceArea = toolkit.createComposite(client);
+		GridLayoutFactory.fillDefaults().numColumns(2).margins(0, 0).applyTo(instanceArea);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(instanceArea);
 
-		instanceSpinner = new Spinner(client, SWT.BORDER);
+		instanceSpinner = new Spinner(instanceArea, SWT.BORDER);
 		GridDataFactory.fillDefaults().align(SWT.LEFT, SWT.CENTER).applyTo(instanceSpinner);
 		instanceSpinner.setMinimum(0);
-		instanceSpinner.addModifyListener(new ModifyListener() {
+//		instanceSpinner.addModifyListener(new ModifyListener() {
+//
+//			public void modifyText(ModifyEvent e) {
+//				if (canUpdate) {
+//					try {
+//						CloudFoundryApplicationModule appModule = getExistingApplication();
+//						new UpdateInstanceCountAction(editorPage, instanceSpinner, appModule).run();
+//					}
+//					catch (CoreException ce) {
+//						logApplicationModuleFailureError(Messages.ApplicationDetailsPart_ERROR_UPDATE_APP_INSTANCE);
+//					}
+//				}
+//			}
+//		});
+		toolkit.adapt(instanceSpinner);
+		
+		//Set Buttton
+		final Button setInstanceButton = createGeneralPushButton(instanceArea, Messages.ApplicationDetailsPart_TEXT_SET);
 
-			public void modifyText(ModifyEvent e) {
-				if (canUpdate) {
+		setInstanceButton.addSelectionListener(new SelectionAdapter() {
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				if (canUpdate && instanceSpinner != null && !instanceSpinner.isDisposed()) {
 					try {
 						CloudFoundryApplicationModule appModule = getExistingApplication();
-						new UpdateInstanceCountAction(editorPage, instanceSpinner, appModule).run();
+						new UpdateInstanceCountAction(editorPage, instanceSpinner.getSelection(), appModule).run();
 					}
 					catch (CoreException ce) {
 						logApplicationModuleFailureError(Messages.ApplicationDetailsPart_ERROR_UPDATE_APP_INSTANCE);
@@ -677,7 +700,6 @@ public class ApplicationDetailsPart extends AbstractFormPart implements IDetails
 				}
 			}
 		});
-		toolkit.adapt(instanceSpinner);
 
 		// Manifest area
 		createLabel(client, Messages.ApplicationDetailsPart_TEXT_MANIFEST, SWT.CENTER);

@@ -38,10 +38,10 @@ public class UpdateInstanceCountAction extends EditorAction {
 
 	private final CloudFoundryApplicationModule module;
 
-	public UpdateInstanceCountAction(CloudFoundryApplicationsEditorPage editorPage, Spinner instanceSpinner,
+	public UpdateInstanceCountAction(CloudFoundryApplicationsEditorPage editorPage, int instanceCount,
 			CloudFoundryApplicationModule module) {
 		super(editorPage, RefreshArea.DETAIL);
-		this.instanceCount = instanceSpinner.getSelection();
+		this.instanceCount = instanceCount;
 		this.module = module;
 	}
 

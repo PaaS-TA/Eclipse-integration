@@ -456,13 +456,6 @@
          	typeIds="org.cloudfoundry.appcloudserver.*"
          	class="org.cloudfoundry.ide.eclipse.server.ui.internal.editor.CloudFoundryAccountSection">
       	</section>
-      	<section
-			id="org.cloudfoundry.ide.eclipse.server.editor.generala"
-         	order="0"
-         	insertionId="org.eclipse.wst.server.editor.overview.left"
-         	typeIds="org.cloudfoundry.appcloudserver.*"
-         	class="org.cloudfoundry.ide.eclipse.server.ui.internal.editor.CloudFoundryAccountSection">
-      	</section>
 		<section
 			id="org.cloudfoundry.ide.eclipse.server.editor.status"
          	order="2"
@@ -511,7 +504,7 @@
     <page
           class="org.cloudfoundry.ide.eclipse.server.ui.internal.editor.CloudFoundryApplicationsEditorPage"
           id="org.cloudfoundry.ide.eclipse.server.editor.applications"
-          name="애플리케이션과 서비스"
+          name="%page.name.1"
           order="1"
           typeIds="org.cloudfoundry.appcloudserver.*">
     </page>

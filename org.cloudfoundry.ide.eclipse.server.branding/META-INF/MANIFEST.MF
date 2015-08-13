@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Cloud Foundry Integration for Eclipse
+Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: org.cloudfoundry.ide.eclipse.server.branding;singleton:=true
 Bundle-Version: 1.8.1.qualifier
-Bundle-Vendor: Pivotal Software, Inc.
+Bundle-Vendor: %Bundle-Vendor
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.ui,

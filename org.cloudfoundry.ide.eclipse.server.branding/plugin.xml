@@ -19,7 +19,7 @@
 		<runtimeType id="org.cloudfoundry.appcloudserver.runtime.10"
 			version="1.0" 
 			name="Open Platform v1.0" 
-			description="Open Platform 은 J2EE 1.2, 1.3, 1.4 와 Java EE 5 Web modules 을 지원합니다."
+			description="%runtimeType.description"
 			vendor="Open Platform" 
 			class="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerRuntime">
 			<moduleType types="wst.web" versions="1.0" />
@@ -33,11 +33,11 @@
 		<serverType
 	        behaviourClass="org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryServerBehaviour"
 	        class="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer"
-	        description="Open Platform 은 J2EE 1.2, 1.3, 1.4 와 Java EE 5 Web modules 을 지원합니다."
+	        description="%serverType.description"
 	        hasConfiguration="false"
 	        id="org.cloudfoundry.appcloudserver.10"
 	        initialState="stopped"
-	        name="개방형 플랫폼"
+	        name="%serverType.name"
 	        runtime="true"
 	        supportsRemoteHosts="true"
 	        runtimeTypeId="org.cloudfoundry.appcloudserver.runtime.10"	

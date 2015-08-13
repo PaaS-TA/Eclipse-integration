@@ -205,6 +205,7 @@ public class BehaviourOperationsTest extends AbstractRefreshCloudTest {
 
 		boolean stopped = new WaitForApplicationToStopOp(cloudServer, appModule).run(new NullProgressMonitor());
 		assertTrue("Expected application to be stopped", stopped);
+		appModule.getApplication().getState();
 		assertTrue("Expected application to be stopped", appModule.getApplication().getState().equals(AppState.STOPPED));
 		assertTrue("Expected application to be stopped", appModule.getState() == Server.STATE_STOPPED);
 

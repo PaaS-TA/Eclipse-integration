@@ -3,11 +3,11 @@
    <feature url="features/org.cloudfoundry.ide.eclipse.server_0.0.0.jar" id="org.cloudfoundry.ide.eclipse.server" version="0.0.0">
       <category name="Core / Open Platform"/>
    </feature>
-   <feature url="features/org.cloudfoundry.ide.eclipse.server_1.8.1.201508041007.jar" id="org.cloudfoundry.ide.eclipse.server" version="1.8.1.201508041007">
-      <category name="Core / Open Platform"/>
-   </feature>
    <feature url="features/org.cloudfoundry.ide.eclipse.server.sdk_1.8.1.qualifier.jar" id="org.cloudfoundry.ide.eclipse.server.sdk" version="1.8.1.qualifier">
       <category name="Resources / Cloud Foundry Integration"/>
+   </feature>
+   <feature url="features/org.cloudfoundry.ide.eclipse.server_1.8.1.201508051105.jar" id="org.cloudfoundry.ide.eclipse.server" version="1.8.1.201508051105">
+      <category name="Core / Open Platform"/>
    </feature>
    <category-def name="Core / Open Platform" label="Core / Open Platform"/>
    <category-def name="Resources / Cloud Foundry Integration" label="Resources / Cloud Foundry Integration"/>

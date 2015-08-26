@@ -230,10 +230,10 @@ public class CloudFoundryBrandingExtensionPoint {
 					String name = config.getAttribute(ATTR_NAME);
 					if (serverId != null && serverId.trim().length() > 0 && name != null && name.trim().length() > 0) {
 						IConfigurationElement[] urls = config.getChildren(ELEM_DEFAULT_URL);
-						if (urls != null && urls.length > 0) {
+//						if (urls != null && urls.length > 0) {
 							brandingDefinitions.put(serverId, config);
 							brandingServerTypeIds.add(serverId);
-						}
+//						}
 					}
 				}
 			}

@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -149,6 +149,7 @@ public class CloudUrlWidget {
 
 		// Get updated list of URLs
 		List<CloudServerURL> cloudUrls = CloudUiUtil.getAllUrls(serverTypeId);
+		System.out.println(cloudUrls.size());
 		String[] updatedUrls = new String[cloudUrls.size()];
 
 		// If there is a last edited URL, set that as the selection in the combo

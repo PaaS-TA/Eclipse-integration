@@ -125,7 +125,7 @@ public class CloudUiUtil {
 
 	public static List<CloudServerURL> getAllUrls(String serverTypeId) {
 		List<CloudServerURL> urls = new ArrayList<CloudFoundryBrandingExtensionPoint.CloudServerURL>();
-		urls.add(getDefaultUrl(serverTypeId));
+//		urls.add(getDefaultUrl(serverTypeId));
 		urls.addAll(getUrls(serverTypeId));
 		return urls;
 	}

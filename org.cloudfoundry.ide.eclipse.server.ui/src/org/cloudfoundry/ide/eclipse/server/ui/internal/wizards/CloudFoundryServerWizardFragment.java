@@ -144,7 +144,7 @@ public class CloudFoundryServerWizardFragment extends WizardFragment {
 
 	@Override
 	public boolean isComplete() {
-		return validationHandler.isOK();
+		return validationHandler.isOK() && credentialsPart.getURLSelection() != null;
 	}
 
 	@Override

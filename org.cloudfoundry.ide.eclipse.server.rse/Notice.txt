@@ -1,10 +1,9 @@
-Cloud Foundry Eclipse Integration
+개방형 플랫폼 이클립스 플러그인
 
-Copyright (c) 2012-2015 Pivotal Software Inc. All Rights Reserved. 
+Copyright© 2015 개방형 플랫폼
 
-This product is licensed to you under the Apache License, Version 2.0 (the "License").  
-You may not use this product except in compliance with the License.  
+이 제품은 아파치 버전 2.0 아래의 라이선스를 가지고 있다. 
+당신은 라이선스를 준수하지 않을 경우 제품을 사용할 수 없다.
 
-This product may include a number of subcomponents with separate copyright notices 
-and license terms. Your use of these subcomponents is subject to the terms and 
-conditions of the subcomponent's license, as noted in the LICENSE file. 
+이 상품은 다양한 저작권을 가진 서브 컴포넌트를 포함 할 수 있다.
+

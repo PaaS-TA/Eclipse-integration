@@ -35,6 +35,9 @@ import org.eclipse.osgi.util.NLS;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.ModifyEvent;
 import org.eclipse.swt.events.ModifyListener;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
@@ -54,6 +57,8 @@ public class CloudUrlWizardPage extends WizardPage {
 	private String name;
 
 	private String url;
+	
+	private boolean selfSigned;
 
 	private Label messageLabel;
 
@@ -65,11 +70,13 @@ public class CloudUrlWizardPage extends WizardPage {
 
 	protected static final String DESCRIPTION = Messages.CloudUrlWizardPage_TEXT_DESCRIPT;
 
-	protected CloudUrlWizardPage(List<CloudServerURL> allCloudUrls, ImageDescriptor descriptor, String url, String name) {
+	protected CloudUrlWizardPage(List<CloudServerURL> allCloudUrls, ImageDescriptor descriptor, String url, 
+			String name, boolean selfSigned) {
 		super(Messages.CloudUrlWizardPage_TEXT_CLOUD_URL);
 		this.allCloudUrls = allCloudUrls;
 		this.name = name;
 		this.url = url;
+		this.selfSigned = selfSigned;
 
 		setTitle(TITLE);
 		setDescription(DESCRIPTION);
@@ -80,9 +87,13 @@ public class CloudUrlWizardPage extends WizardPage {
 	}
 
 	public void createControl(Composite parent) {
-		Composite composite = new Composite(parent, SWT.NONE);
-		GridDataFactory.fillDefaults().grab(true, true).hint(400, SWT.DEFAULT).applyTo(composite);
-		GridLayoutFactory.fillDefaults().margins(10, 10).numColumns(2).applyTo(composite);
+		Composite area = new Composite(parent, SWT.NONE);
+		GridDataFactory.fillDefaults().grab(true, true).hint(400, SWT.DEFAULT).applyTo(area);
+		GridLayoutFactory.fillDefaults().margins(10, 10).numColumns(1).applyTo(area);
+		
+		Composite composite = new Composite(area, SWT.NONE);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(composite);
+		GridLayoutFactory.fillDefaults().numColumns(2).applyTo(composite);
 
 		messageLabel = new Label(composite, SWT.NONE);
 		messageLabel.setText(Messages.CloudUrlWizardPage_LABEL_CLOUD_URL_NAME);
@@ -127,6 +138,24 @@ public class CloudUrlWizardPage extends WizardPage {
 				update();
 			}
 		});
+		
+		Composite buttonArea = new Composite(area, SWT.NONE);
+		GridDataFactory.fillDefaults().grab(true, false).applyTo(buttonArea);
+		GridLayoutFactory.fillDefaults().numColumns(1).applyTo(buttonArea);
+
+		final Button selfSignedButton = new Button(buttonArea, SWT.CHECK);
+		selfSignedButton.setText(Messages.CloudUrlWizardPage_SELF_SIGNED);
+		GridDataFactory.fillDefaults().grab(false, false).applyTo(selfSignedButton);
+		selfSignedButton.setSelection(selfSigned);
+
+		selfSignedButton.addSelectionListener(new SelectionAdapter() {
+
+			@Override
+			public void widgetSelected(SelectionEvent e) {
+				CloudUrlWizardPage.this.selfSigned = selfSignedButton.getSelection();
+			}
+
+		});
 
 		Dialog.applyDialogFont(composite);
 		setControl(composite);
@@ -155,8 +184,7 @@ public class CloudUrlWizardPage extends WizardPage {
 				if (!cloudUrl.getUrl().contains("{")) { //$NON-NLS-1$
 					if (cloudUrl.getName().equals(name)) {
 						canFinish = false;
-						messageLabel
-								.setText(NLS.bind(Messages.CloudUrlWizardPage_LABEL_SET_DIFF_URL, name ));
+						messageLabel.setText(NLS.bind(Messages.CloudUrlWizardPage_LABEL_SET_DIFF_URL, name));
 					}
 				}
 			}
@@ -205,6 +233,10 @@ public class CloudUrlWizardPage extends WizardPage {
 
 	public String getUrl() {
 		return url;
+	}
+	
+	public boolean getSelfSigned() {
+		return selfSigned;
 	}
 
 	@Override

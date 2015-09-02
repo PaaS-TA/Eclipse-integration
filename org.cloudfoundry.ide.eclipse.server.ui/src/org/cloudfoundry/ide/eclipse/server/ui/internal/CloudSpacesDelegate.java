@@ -64,12 +64,6 @@ public abstract class CloudSpacesDelegate {
 
 	protected final String serverServiceName;
 
-	/**
-	 * 
-	 * Local cache to prevent frequent cloud space descriptor lookups
-	 */
-	private Map<String, CloudSpacesDescriptor> cachedDescriptors = new HashMap<String, CloudSpacesDescriptor>();
-
 	protected CloudSpacesDelegate(CloudFoundryServer cloudServer) {
 		this.cloudServer = cloudServer;
 		String serverTypeId = cloudServer.getServer().getServerType().getId();
@@ -126,10 +120,10 @@ public abstract class CloudSpacesDelegate {
 	 * @param password
 	 * @return
 	 */
-	public boolean matchesCurrentDescriptor(String urlText, String userName, String password) {
+	public boolean matchesCurrentDescriptor(String urlText, String userName, String password, boolean selfSigned) {
 		String actualURL = CloudUiUtil.getUrlFromDisplayText(urlText);
 
-		String cachedDescriptorID = CloudSpacesDescriptor.getDescriptorID(userName, password, actualURL);
+		String cachedDescriptorID = CloudSpacesDescriptor.getDescriptorID(userName, password, actualURL, selfSigned);
 
 		// If there are no changes in credentials and URL, and a descriptor is
 		// already present, do not do a lookup or notify listeners of changes.
@@ -188,12 +182,12 @@ public abstract class CloudSpacesDelegate {
 	}
 
 	/**
-	 * Resolves and validates the cloud org/space descriptor as well as the cloud space
-	 * selection in the current local server instance. Note that cloud space
-	 * descriptors are cached per each session of this Cloud Space change
-	 * handler, in order to prevent frequent requests for orgs and spaces for
-	 * credentials that have already been processed. To obtain a clean updated
-	 * list of descriptors, create a new cloud space change handler.
+	 * Resolves and validates the cloud org/space descriptor as well as the
+	 * cloud space selection in the current local server instance. Note that
+	 * cloud space descriptors are cached per each session of this Cloud Space
+	 * change handler, in order to prevent frequent requests for orgs and spaces
+	 * for credentials that have already been processed. To obtain a clean
+	 * updated list of descriptors, create a new cloud space change handler.
 	 * 
 	 * @param urlText either correct URL or display version of the URL. If
 	 * display URL, attempt will be made to resolve the actual URL>
@@ -211,8 +205,8 @@ public abstract class CloudSpacesDelegate {
 	 * credentials and URL in the server, are invalid, or failed to retrieve
 	 * list of spaces
 	 */
-	public CloudSpacesDescriptor resolveDescriptor(String urlText, String userName, String password, boolean selfSigned,
-			IRunnableContext context, boolean updateDescriptor) throws CoreException {
+	public CloudSpacesDescriptor resolveDescriptor(String urlText, String userName, String password,
+			boolean selfSigned, IRunnableContext context, boolean updateDescriptor) throws CoreException {
 		CloudSpacesDescriptor descriptor = null;
 		if (updateDescriptor) {
 			descriptor = internalUpdateDescriptor(urlText, userName, password, selfSigned, context);
@@ -231,15 +225,12 @@ public abstract class CloudSpacesDelegate {
 
 		validateCredentialsLocally(actualURL, userName, password);
 
-		String cachedDescriptorID = CloudSpacesDescriptor.getDescriptorID(userName, password, actualURL);
-		spacesDescriptor = cachedDescriptors.get(cachedDescriptorID);
 		if (spacesDescriptor == null) {
 			CloudOrgsAndSpaces orgsAndSpaces = CloudUiUtil.getCloudSpaces(userName, password, actualURL, true,
 					selfSigned, context);
 
 			if (orgsAndSpaces != null) {
-				spacesDescriptor = new CloudSpacesDescriptor(orgsAndSpaces, userName, password, actualURL);
-				cachedDescriptors.put(cachedDescriptorID, spacesDescriptor);
+				spacesDescriptor = new CloudSpacesDescriptor(orgsAndSpaces, userName, password, actualURL, selfSigned);
 			}
 		}
 
@@ -281,10 +272,8 @@ public abstract class CloudSpacesDelegate {
 		}
 
 		if (!isValid) {
-			throw new CoreException(
-					CloudFoundryPlugin.getErrorStatus(NLS
-							.bind(Messages.CloudSpacesDelegate_ERROR_FAIL_LOADING_CLOUDSPACES,
-									new String[] { actualURL, userName })));
+			throw new CoreException(CloudFoundryPlugin.getErrorStatus(NLS.bind(
+					Messages.CloudSpacesDelegate_ERROR_FAIL_LOADING_CLOUDSPACES, new String[] { actualURL, userName })));
 		}
 	}
 

@@ -775,13 +775,7 @@ public class CloudFoundryServer extends ServerDelegate implements IURLProvider {
 	 * including if server preference can't be resolved.
 	 */
 	public boolean getSelfSignedCertificate() {
-		try {
-			return new SelfSignedStore(getUrl()).isSelfSignedCert();
-		}
-		catch (CoreException e) {
-			CloudFoundryPlugin.logError(e);
-		}
-		return false;
+		return getSelfSignedCertificate(getUrl());
 	}
 
 	public void setSelfSignedCertificate(boolean isSelfSigned) {
@@ -1246,9 +1240,19 @@ public class CloudFoundryServer extends ServerDelegate implements IURLProvider {
 		try {
 			new SelfSignedStore(cloudServerURL).setSelfSignedCert(isSelfSigned);
 		}
-		catch (CoreException e) {
+		catch (Throwable e) {
 			CloudFoundryPlugin.logError(e);
 		}
+	}
+	
+	public static boolean getSelfSignedCertificate(String cloudServerURL) {
+		try {
+			return new SelfSignedStore(cloudServerURL).isSelfSignedCert();
+		}
+		catch (Throwable e) {
+			CloudFoundryPlugin.logError(e);
+		}
+		return false;
 	}
 
 	public URL getModuleRootURL(final IModule curModule) {

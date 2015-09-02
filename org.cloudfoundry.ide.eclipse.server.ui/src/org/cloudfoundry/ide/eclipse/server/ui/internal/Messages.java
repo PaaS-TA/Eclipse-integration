@@ -766,6 +766,8 @@ public class Messages extends NLS {
 	public static String CloudUrlWizardPage_TEXT_DESCRIPT;
 
 	public static String CloudUrlWizardPage_TITLE_CLOUD_URL;
+	
+	public static String CloudUrlWizardPage_SELF_SIGNED;
 
 	public static String CommandDefinitionActions_TEXT_CMD_DEF;
 
@@ -1006,7 +1008,6 @@ public class Messages extends NLS {
 
 	public static String COMMONTXT_VARIABLE;
 	public static String COMMONTXT_VALUE;
-
 	
 
 	private static final String BUNDLE_NAME = CloudFoundryServerUiPlugin.PLUGIN_ID + ".internal.Messages"; //$NON-NLS-1$

@@ -3,7 +3,7 @@
  * 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Apache License, 
- * Version 2.0 (the "LicenseÓ); you may not use this file except in compliance 
+ * Version 2.0 (the "Licenseï¿½); you may not use this file except in compliance 
  * with the License. You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
@@ -25,9 +25,10 @@ public class CloudSpacesDescriptor {
 
 	private final CloudOrgsAndSpaces spaces;
 
-	public CloudSpacesDescriptor(CloudOrgsAndSpaces spaces, String userName, String password, String actualServerURL) {
+	public CloudSpacesDescriptor(CloudOrgsAndSpaces spaces, String userName, String password, String actualServerURL,
+			boolean selfSigned) {
 		this.spaces = spaces;
-		descriptorID = getDescriptorID(userName, password, actualServerURL);
+		descriptorID = getDescriptorID(userName, password, actualServerURL, selfSigned);
 
 	}
 
@@ -39,11 +40,11 @@ public class CloudSpacesDescriptor {
 		return descriptorID;
 	}
 
-	public static String getDescriptorID(String userName, String password, String actualURL) {
+	public static String getDescriptorID(String userName, String password, String actualURL, boolean selfSigned) {
 		if (userName == null || password == null || actualURL == null) {
 			return null;
 		}
-		return userName + password + actualURL;
+		return userName + password + actualURL + selfSigned;
 	}
 
 }

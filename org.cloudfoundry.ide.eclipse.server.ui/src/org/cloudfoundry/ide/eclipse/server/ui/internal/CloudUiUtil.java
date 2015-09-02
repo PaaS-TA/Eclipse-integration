@@ -35,6 +35,7 @@ import org.cloudfoundry.ide.eclipse.server.core.internal.CloudErrorUtil;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryBrandingExtensionPoint;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryBrandingExtensionPoint.CloudServerURL;
 import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryPlugin;
+import org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServer;
 import org.cloudfoundry.ide.eclipse.server.core.internal.client.CloudFoundryServerBehaviour;
 import org.cloudfoundry.ide.eclipse.server.core.internal.spaces.CloudOrgsAndSpaces;
 import org.eclipse.core.runtime.CoreException;
@@ -187,7 +188,8 @@ public class CloudUiUtil {
 								url = values[1];
 							}
 
-							urls.add(new CloudServerURL(name, url, true));
+							boolean selfSigned = url != null && CloudFoundryServer.getSelfSignedCertificate(url);
+							urls.add(new CloudServerURL(name, url, true, selfSigned));
 						}
 					}
 
@@ -210,6 +212,9 @@ public class CloudUiUtil {
 				builder.append(url.getUrl());
 
 				builder.append("||"); //$NON-NLS-1$
+				
+				// Also store the self-signed for each user-defined URL
+				CloudFoundryServer.setSelfSignedCertificate(url.getSelfSigned(), url.getUrl());
 			}
 		}
 
@@ -451,7 +456,8 @@ public class CloudUiUtil {
 				url = dialog.getUrl();
 				String name = dialog.getName();
 				// CloudUiUtil.addUserDefinedUrl(serverTypeId, name, url);
-				return new CloudServerURL(name, url, true);
+				boolean selfSigned = url != null && CloudFoundryServer.getSelfSignedCertificate(url);
+				return new CloudServerURL(name, url, true, selfSigned);
 			}
 			else {
 				return null;

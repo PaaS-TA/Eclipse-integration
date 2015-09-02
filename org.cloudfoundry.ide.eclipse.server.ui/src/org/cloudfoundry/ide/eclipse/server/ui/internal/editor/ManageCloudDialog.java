@@ -119,7 +119,8 @@ public class ManageCloudDialog extends Dialog {
 	 */
 	protected CloudServerURL promptForCloudURL(String serverID, Shell shell, List<CloudServerURL> allURLs,
 			String existingURL, String existingName) {
-		CloudUrlWizard wizard = new CloudUrlWizard(serverID, allURLs, existingURL, existingName);
+		boolean selfSigned = existingURL != null && CloudFoundryServer.getSelfSignedCertificate(existingURL);
+		CloudUrlWizard wizard = new CloudUrlWizard(serverID, allURLs, existingURL, existingName, selfSigned);
 		WizardDialog dialog = new WizardDialog(shell, wizard);
 		if (dialog.open() == Dialog.OK) {
 			return wizard.getCloudUrl();

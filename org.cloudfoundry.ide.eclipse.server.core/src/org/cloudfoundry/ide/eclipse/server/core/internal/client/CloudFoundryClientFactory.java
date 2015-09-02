@@ -87,6 +87,11 @@ public class CloudFoundryClientFactory {
 	}
 
 	public CloudFoundryOperations getCloudFoundryOperations(String cloudControllerUrl) throws MalformedURLException {
+		return getCloudFoundryOperations(cloudControllerUrl, false);
+	}
+	
+	public CloudFoundryOperations getCloudFoundryOperations(String cloudControllerUrl, boolean selfSigned) 
+			throws MalformedURLException {
 		URL url = new URL(cloudControllerUrl);
 		// Proxies are always updated on each client call by the
 		// CloudFoundryServerBehaviour Request as well as the client login
@@ -94,7 +99,7 @@ public class CloudFoundryClientFactory {
 		// therefore it is not critical to set the proxy in the client on client
 		// creation
 		HttpProxyConfiguration proxyConfiguration = getProxy(url);
-		return new CloudFoundryClient(url, proxyConfiguration);
+		return new CloudFoundryClient(url, proxyConfiguration, selfSigned);
 	}
 
 	protected static CloudCredentials getCredentials(String userName, String password) {

@@ -18,9 +18,9 @@
 	<extension point="org.eclipse.wst.server.core.runtimeTypes">
 		<runtimeType id="org.cloudfoundry.appcloudserver.runtime.10"
 			version="1.0" 
-			name="Open Platform v1.0" 
+			name="Open PaaS 개발환경 v0.1" 
 			description="%runtimeType.description"
-			vendor="Open Platform" 
+			vendor="Open PaaS" 
 			class="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerRuntime">
 			<moduleType types="wst.web" versions="1.0" />
 			<moduleType types="jst.web" versions="2.2,2.3,2.4,2.5,3.0,3.1" />
@@ -99,10 +99,10 @@
 	 <extension
        point="org.cloudfoundry.ide.eclipse.server.core.branding">
 	    <service
-           name="Open Platform"
+           name="Open PaaS"
            provideServices="true"
            remoteSystemTypeId="org.cloudfoundry.cloudfoundryserver"
-           serverDisplayName="Open Platform"
+           serverDisplayName="Open PaaS"
            serverTypeId="org.cloudfoundry.appcloudserver.10"
            wizardBanner="icons/wizban/wizban_cloudfoundry_white.png">
            <!--
@@ -133,8 +133,8 @@
           icon="icons/obj16/cloud_obj.png"
           iconLive="icons/obj16/cloud_obj.png"
           id="org.cloudfoundry.cloudfoundryserver"
-          label="Open Platform"
-          name="Open Platform"
+          label="Open PaaS 개발환경"
+          name="Open PaaS 개발환경"
           subsystemConfigurationIds="cloudserver.applications">
     </systemType>
  </extension>

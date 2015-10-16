@@ -252,6 +252,7 @@ public class CloudFoundryCredentialsPart extends UIPart implements IPartChangeLi
 				}
 			}
 		});
+		registerAccountButton.setVisible(false);
 
 		cfSignupButton = new Button(validateComposite, SWT.PUSH);
 		cfSignupButton.setText(CloudFoundryConstants.PUBLIC_CF_SERVER_SIGNUP_LABEL);
@@ -265,6 +266,7 @@ public class CloudFoundryCredentialsPart extends UIPart implements IPartChangeLi
 				}
 			}
 		});
+		cfSignupButton.setVisible(false);
 
 		TabItem item = new TabItem(folder, SWT.NONE);
 		item.setText(Messages.COMMONTXT_ACCOUNT_INFO);

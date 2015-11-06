@@ -89,6 +89,8 @@ import org.eclipse.wst.server.core.model.IModuleFile;
 import org.eclipse.wst.server.core.model.IModuleResource;
 import org.eclipse.wst.server.core.model.IModuleResourceDelta;
 import org.eclipse.wst.server.core.model.ServerBehaviourDelegate;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestClientException;
 
 /**
@@ -1107,7 +1109,19 @@ public class CloudFoundryServerBehaviour extends ServerBehaviourDelegate {
 		Thread.sleep(initialInterval);
 		long timeLeft = CloudOperationsConstants.DEPLOYMENT_TIMEOUT - initialInterval;
 		while (timeLeft > 0) {
-			CloudApplication deploymentDetails = client.getApplication(deploymentId);
+			
+			CloudApplication deploymentDetails = null;
+			try {
+				deploymentDetails = client.getApplication(deploymentId);
+			} catch (HttpServerErrorException hse) {
+				if(hse.getStatusCode() == HttpStatus.SERVICE_UNAVAILABLE){
+					Thread.sleep(initialInterval);
+					timeLeft -= initialInterval;
+					continue;
+				} else
+					throw hse;
+			}
+			
 			if (isApplicationReady(deploymentDetails)) {
 				return true;
 			}

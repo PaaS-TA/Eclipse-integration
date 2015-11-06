@@ -203,7 +203,7 @@ public class CloudUrlWizard extends Wizard {
 		}
 		if (!shouldProceed[0]) {
 			String errorMessage = getErrorMessage(exception[0], url);
-			shouldProceed[0] = MessageDialog.openQuestion(getShell(), Messages.CloudUrlWizard_ERROR_KEEP_TITLE, errorMessage
+			shouldProceed[0] = MessageDialog.openQuestion(getShell(), Messages.CloudUrlWizard_ERROR_KEEP_TITLE, errorMessage + "\n" 
 					+ Messages.CloudUrlWizard_ERROR_KEEP_BODY);
 		}
 		return shouldProceed[0];
@@ -213,6 +213,7 @@ public class CloudUrlWizard extends Wizard {
 	protected String getErrorMessage(Exception exception, String url) {
 		StringBuilder builder = new StringBuilder();
 		builder.append(Messages.CloudUrlWizard_ERROR_VALIDATE);
+		builder.append("\n");
 		builder.append(url);
 
 		if (exception != null) {

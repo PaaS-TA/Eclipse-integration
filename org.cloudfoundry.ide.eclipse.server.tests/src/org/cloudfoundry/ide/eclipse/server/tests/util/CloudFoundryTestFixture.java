@@ -195,6 +195,7 @@ public class CloudFoundryTestFixture {
 			cloudFoundryServer.setUsername(credentials.userEmail);
 
 			cloudFoundryServer.setUrl(getUrl());
+			cloudFoundryServer.setSelfSignedCertificate(true);
 
 			setCloudSpace(cloudFoundryServer, credentials.organization, credentials.space);
 
@@ -494,7 +495,8 @@ public class CloudFoundryTestFixture {
 	}
 
 	public boolean getSelfSignedCertificate() {
-		return false;
+//		return false;
+		return true;
 	}
 
 	/**

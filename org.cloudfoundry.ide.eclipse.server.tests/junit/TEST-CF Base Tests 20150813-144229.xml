@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+  <testsuite name="org.cloudfoundry.ide.eclipse.server.tests.AllCloudFoundryTests" time="3993.075">
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="867.636">
+      <testcase name="testAsynchAppURLUpdate" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="91.657"/>
+      <testcase name="testAsynchEnvVarUpdate" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="95.941"/>
+      <testcase name="testAsynchPushApplicationStopMode" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="43.32"/>
+      <testcase name="testAsynchInstanceUpdate" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="89.979"/>
+      <testcase name="testAsynchMemoryUpdate" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="96.301"/>
+      <testcase name="testAsynchUpdateRestartApplication" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="99.62"/>
+      <testcase name="testAsynchStartApplication" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="97.451"/>
+      <testcase name="testAsynchPushApplicationStartMode" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="68.356"/>
+      <testcase name="testAsynchStopApplication" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="100.237"/>
+      <testcase name="testAsychRestartApplication" classname="org.cloudfoundry.ide.eclipse.server.core.internal.BehaviourOperationsTest" time="84.774"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="1217.248">
+      <testcase name="testSingleModuleUpdateExternalAppDeletion" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="72.644"/>
+      <testcase name="testScheduleRefreshHandlerAllModules" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="87.158"/>
+      <testcase name="testScheduleRefreshHandlerDeploymentChange" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="79.551"/>
+      <testcase name="testSingleModuleUpdateNonExistantApp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="24.119"/>
+      <testcase name="testScheduleRefreshHandlerAllModuleInstances" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="83.099"/>
+      <testcase name="testAllModuleUpdateExternalCreation" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="31.551"/>
+      <testcase name="testUpdateModuleInstances" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="33.548"/>
+      <testcase name="testModuleUpdatesExternalChanges" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="105.078"/>
+      <testcase name="testModuleRefreshAllOp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="80.847"/>
+      <testcase name="testUpdateModulesServerBehaviourExistingCloudApp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="31.005"/>
+      <testcase name="testScheduleRefreshHandlerRefreshApplication" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="86.529"/>
+      <testcase name="testUpdateModulesCloudServer" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="32.509"/>
+      <testcase name="testModuleRefreshDuringServerConnect1" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="88.435"/>
+      <testcase name="testModuleRefreshDuringServerConnect2" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="91.879"/>
+      <testcase name="testAllModuleUpdateExternalAppDeletion" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="73.476"/>
+      <testcase name="testFireEventAppChanged" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="73.497"/>
+      <testcase name="testModuleRefreshApplicationOp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="80.152"/>
+      <testcase name="testUpdateModulesServerBehaviourWrongCloudApp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="30.984"/>
+      <testcase name="testSingleModuleUpdateExternalCreation" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ModuleRefreshTest" time="31.184"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="971.708">
+      <testcase name="testStartModuleInvalidUsername" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="81.207"/>
+      <testcase name="testApplicationDeploymentInfo" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="96.545"/>
+      <testcase name="testWSTBehaviourStartStop" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="100.675"/>
+      <testcase name="testCreateDeployAppHelpersStartMode" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="81.001"/>
+      <testcase name="testCloudFoundryModuleCreationNonWSTPublish" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="67.341"/>
+      <testcase name="testWSTBehaviourStopModule" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="76.688"/>
+      <testcase name="testStartModuleInvalidPassword" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="87.123"/>
+      <testcase name="testDisconnect" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="24.057"/>
+      <testcase name="testCloudFoundryModuleCreationWSTPublish" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="67.199"/>
+      <testcase name="testCreateDeployAppHelpersStopMode" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="46.682"/>
+      <testcase name="testCloudModulesClearedOnDisconnect" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="67.752"/>
+      <testcase name="testServerBehaviourIsApplicationRunning" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="75.918"/>
+      <testcase name="testDeleteModuleExternally" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="77.464"/>
+      <testcase name="testBaseSetupConnect" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerBehaviourTest" time="22.055"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="252.739">
+      <testcase name="testInvalidProxyJavaCFClient" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="27.164"/>
+      <testcase name="testProxyDirectSetHTTP" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="22.801"/>
+      <testcase name="testInvalidProxyThroughServerInstance" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="88.531"/>
+      <testcase name="testNoProxySetHTTPS" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="22.432"/>
+      <testcase name="testProxySetDirectHTTPS" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="23.324"/>
+      <testcase name="testNoProxySetHTTP" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="21.511"/>
+      <testcase name="testProxyManualSetHTTP" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="21.665"/>
+      <testcase name="testProxySetManualHTTPS" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryProxyTest" time="25.311"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.01">
+      <testcase name="testPersistNoFlush" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testSetPasswordNull" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testFlush" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.002"/>
+      <testcase name="testSetUsernameNull" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testPersistFlush" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testGetSetUsername" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testFlushNull" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testPersistFlushNewId" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+      <testcase name="testGetSetPassword" classname="org.cloudfoundry.ide.eclipse.server.core.internal.ServerCredentialsStoreTest" time="0.001"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerTest" time="0.127">
+      <testcase name="testSetPasswordMigrateLegacy" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerTest" time="0.029"/>
+      <testcase name="testGetServerId" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerTest" time="0.025"/>
+      <testcase name="testSetPasswordMigrateChangePasswordOnly" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerTest" time="0.032"/>
+      <testcase name="testGetPasswordLegacy" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerTest" time="0.022"/>
+      <testcase name="testSaveCredentials" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerTest" time="0.018"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.CloudUtilTest" time="11.118">
+      <testcase name="testCreateWarFile" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudUtilTest" time="11.118"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.004">
+      <testcase name="testDeploymentInvalidURLExtraSpacesNonSpaceChar" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLValidatorEmpty" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.001"/>
+      <testcase name="testDeploymentInvalidURLValueExtraSpaces" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLNameValidator" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentValidURLNameValidator" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLValueEmpty" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.001"/>
+      <testcase name="testDeploymentValidURLName" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLValidatorExtraSpaces" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLValueNull" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLValidatorNull" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.001"/>
+      <testcase name="testDeploymentInvalidURLNameValidator2" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLNameValidator3" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentInvalidURLNameValidator4" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.0"/>
+      <testcase name="testDeploymentValidURLNameValidator2" classname="org.cloudfoundry.ide.eclipse.server.core.internal.DeploymentURLTest" time="0.001"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="639.486">
+      <testcase name="testCreateAndDeleteService" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="37.783"/>
+      <testcase name="testServiceBindingUnbindingAppStarted" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="108.705"/>
+      <testcase name="testServiceCreationEvent" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="36.884"/>
+      <testcase name="testServiceBindingUnbindingAppStopped" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="73.641"/>
+      <testcase name="testNoService" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="27.305"/>
+      <testcase name="testServiceCreationServicesInEvent" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="28.902"/>
+      <testcase name="testServiceDeletionEvent" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="41.737"/>
+      <testcase name="testServiceBindingInDeploymentInfo" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="94.67"/>
+      <testcase name="testServiceCreationOp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="34.712"/>
+      <testcase name="testServiceDeletionServicesInEvent" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="43.428"/>
+      <testcase name="testServiceDeletionOp" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="37.267"/>
+      <testcase name="testExternalCreatedServiceBehaviour" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="33.866"/>
+      <testcase name="testExternalCreatedServiceRefresh" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServicesTest" time="40.584"/>
+    </testsuite>
+    <testsuite name="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="32.998">
+      <testcase name="testInvalidUsername" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="2.006"/>
+      <testcase name="testConnectToNonSecureUrl" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="5.473"/>
+      <testcase name="testInvalidPassword" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="2.127"/>
+      <testcase name="testConnectToSecureUrl" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="5.368"/>
+      <testcase name="testValidCredentialsLoginHandler" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="5.498"/>
+      <testcase name="testValidCredentials" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="4.533"/>
+      <testcase name="testInvalidSpace" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="4.052"/>
+      <testcase name="testInvalidOrg" classname="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryClientConnectionTest" time="3.941"/>
+    </testsuite>
+  </testsuite>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="org.cloudfoundry.ide.eclipse.server.tests">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="../../../../../../Dev/eclipse_rcpDev/"/>
+    <property name="junit.output.dir" value="junit"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+    <path id="Plug-in Dependencies.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.runtime_3.10.0.v20140318-2214.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/javax.annotation_1.2.0.v201401042248.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/javax.inject_1.0.0.v20091030.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.osgi_3.10.2.v20150203-1939.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.osgi.compatibility.state_1.0.1.v20140709-1414.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.common_3.6.200.v20130402-1505.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.jobs_3.6.1.v20141014-1248.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.runtime.compatibility.registry_3.5.300.v20140128-0851/runtime_registry_compatibility.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.registry_3.5.400.v20140428-1507.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.preferences_3.5.200.v20140224-1527.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.contenttype_3.4.200.v20140207-1251.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.equinox.app_1.3.200.v20130910-1609.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.resources_3.9.1.v20140825-1431.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.debug.core_3.9.1.v20140805-1629.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jdt.launching_3.7.102.v20141111-0953.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jst.server.core_1.2.400.v201309182039.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.wst.server.core_1.6.2.v201409292121.jar"/>
+        <pathelement location="../../../../../../org.cloudfoundry.ide.eclipse.server.core"/>
+        <pathelement location="../../../../../../org.cloudfoundry.ide.eclipse.server.ui"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ui_3.106.1.v20141002-1150.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.swt_3.103.2.v20150203-1313.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.swt.win32.win32.x86_64_3.103.2.v20150203-1351.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jface_3.10.2.v20141021-1035.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.commands_3.6.100.v20140528-1422.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ui.workbench_3.106.2.v20150204-1030.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.e4.ui.workbench3_0.12.0.v20140227-2118.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.hamcrest.core_1.3.0.v201303031735.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jdt.core_3.10.2.v20150120-1634.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jdt.compiler.apt_1.1.0.v20150122-0735.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.jdt.compiler.tool_1.0.300.v20150114-1827.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.core.net_1.2.200.v20140124-2013.jar"/>
+        <pathelement location="${ECLIPSE_HOME}plugins/org.eclipse.ui.console_3.5.300.v20140424-1437.jar"/>
+    </path>
+    <path id="org.cloudfoundry.ide.eclipse.server.tests.classpath">
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <pathelement location="target/classes"/>
+    </path>
+    <path id="Maven Dependencies.libraryclasspath"/>
+    <path id="run.AllCloudFoundryTests (1).classpath">
+        <path refid="org.cloudfoundry.ide.eclipse.server.tests.classpath"/>
+        <path refid="Maven Dependencies.libraryclasspath"/>
+    </path>
+    <target name="init">
+        <mkdir dir="target/classes"/>
+        <copy includeemptydirs="false" todir="target/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="target/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="target/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="org.cloudfoundry.ide.eclipse.server.tests.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="AllCloudFoundryTests (1)">
+        <mkdir dir="${junit.output.dir}"/>
+        <junit fork="yes" printsummary="withOutAndErr">
+            <formatter type="xml"/>
+            <test name="org.cloudfoundry.ide.eclipse.server.tests.AllCloudFoundryTests" todir="${junit.output.dir}"/>
+            <classpath refid="run.AllCloudFoundryTests (1).classpath"/>
+        </junit>
+    </target>
+    <target name="junitreport">
+        <junitreport todir="${junit.output.dir}">
+            <fileset dir="${junit.output.dir}">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="${junit.output.dir}"/>
+        </junitreport>
+    </target>
+</project>

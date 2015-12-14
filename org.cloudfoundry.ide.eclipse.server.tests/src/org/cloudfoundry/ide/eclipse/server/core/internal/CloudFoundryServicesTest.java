@@ -34,6 +34,8 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 
 	public static final String SERVICE_NAME = "cfEclipseRegressionTestService";
+	public static final String SERVICE_LABEL = "postgresql";
+	public static final String SERVICE_PLAN = "default";
 
 	public void testCreateAndDeleteService() throws Exception {
 		CloudService service = createDefaultService();
@@ -42,8 +44,8 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 		List<CloudService> existingServices = serverBehavior.getServices(new NullProgressMonitor());
 		assertTrue("Expected 1 service", existingServices.size() == 1);
 		assertEquals(SERVICE_NAME, existingServices.get(0).getName());
-		assertEquals("elephantsql", existingServices.get(0).getLabel());
-		assertEquals("turtle", existingServices.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, existingServices.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, existingServices.get(0).getPlan());
 
 		assertServiceExists(existingServices.get(0));
 
@@ -134,7 +136,7 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 		// Test service creation operation and that asynchronous service
 		// creation triggers a service change event
 
-		CloudService service = getCloudServiceToCreate(SERVICE_NAME, "elephantsql", "turtle");
+		CloudService service = getCloudServiceToCreate(SERVICE_NAME, SERVICE_LABEL, SERVICE_PLAN);
 		asynchExecuteOperationWaitForRefresh(
 				serverBehavior.operations().createServices(new CloudService[] { service }), null,
 				CloudServerEvent.EVENT_UPDATE_SERVICES);
@@ -166,7 +168,7 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 
 	public void testServiceCreationOp() throws Exception {
 
-		CloudService toCreate = getCloudServiceToCreate("testServiceCreationOp", "elephantsql", "turtle");
+		CloudService toCreate = getCloudServiceToCreate("testServiceCreationOp", SERVICE_LABEL, SERVICE_PLAN);
 		CloudService[] services = new CloudService[] { toCreate };
 
 		serverBehavior.operations().createServices(services).run(new NullProgressMonitor());
@@ -174,15 +176,15 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 		List<CloudService> existing = serverBehavior.getServices(new NullProgressMonitor());
 		assertTrue("Expected 1 service", existing.size() == 1);
 		assertEquals("testServiceCreationOp", existing.get(0).getName());
-		assertEquals("elephantsql", existing.get(0).getLabel());
-		assertEquals("turtle", existing.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, existing.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, existing.get(0).getPlan());
 
 		assertServiceExists(existing.get(0));
 	}
 
 	public void testServiceDeletionOp() throws Exception {
 
-		CloudService toCreate = getCloudServiceToCreate("testServiceDeletionOp", "elephantsql", "turtle");
+		CloudService toCreate = getCloudServiceToCreate("testServiceDeletionOp", SERVICE_LABEL, SERVICE_PLAN);
 		CloudService[] services = new CloudService[] { toCreate };
 
 		serverBehavior.operations().createServices(services).run(new NullProgressMonitor());
@@ -190,8 +192,8 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 		List<CloudService> existing = serverBehavior.getServices(new NullProgressMonitor());
 		assertTrue("Expected 1 service", existing.size() == 1);
 		assertEquals("testServiceDeletionOp", existing.get(0).getName());
-		assertEquals("elephantsql", existing.get(0).getLabel());
-		assertEquals("turtle", existing.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, existing.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, existing.get(0).getPlan());
 
 		assertServiceExists(existing.get(0));
 
@@ -206,7 +208,7 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 
 	public void testServiceCreationServicesInEvent() throws Exception {
 
-		CloudService toCreate = getCloudServiceToCreate("testServiceCreationServicesInEvent", "elephantsql", "turtle");
+		CloudService toCreate = getCloudServiceToCreate("testServiceCreationServicesInEvent", SERVICE_LABEL, SERVICE_PLAN);
 		CloudService[] services = new CloudService[] { toCreate };
 
 		ModulesRefreshListener refreshListener = new ModulesRefreshListener(cloudServer,
@@ -223,8 +225,8 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 		List<CloudService> existing = cloudEvent.getServices();
 		assertTrue("Expected 1 created service in cloud refresh event", existing.size() == 1);
 		assertEquals("testServiceCreationServicesInEvent", existing.get(0).getName());
-		assertEquals("elephantsql", existing.get(0).getLabel());
-		assertEquals("turtle", existing.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, existing.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, existing.get(0).getPlan());
 
 		assertServiceExists(existing.get(0));
 
@@ -233,9 +235,9 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 
 	public void testServiceDeletionServicesInEvent() throws Exception {
 
-		CloudService service = createCloudService("testServiceDeletionServicesInEvent", "elephantsql", "turtle");
+		CloudService service = createCloudService("testServiceDeletionServicesInEvent", SERVICE_LABEL, SERVICE_PLAN);
 		assertServiceExists(service);
-		service = createCloudService("testAnotherService", "elephantsql", "turtle");
+		service = createCloudService("testAnotherService", SERVICE_LABEL, SERVICE_PLAN);
 		List<CloudService> services = serverBehavior.getServices(new NullProgressMonitor());
 		assertEquals("Expected 2 services", 2, services.size());
 
@@ -256,8 +258,8 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 
 		assertTrue("Expected 1 service in cloud refresh event", eventServices.size() == 1);
 		assertEquals("testAnotherService", eventServices.get(0).getName());
-		assertEquals("elephantsql", eventServices.get(0).getLabel());
-		assertEquals("turtle", eventServices.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, eventServices.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, eventServices.get(0).getPlan());
 
 		assertServiceExists(eventServices.get(0));
 
@@ -267,7 +269,7 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 	public void testExternalCreatedServiceRefresh() throws Exception {
 		CloudFoundryOperations client = harness.createExternalClient();
 		client.login();
-		CloudService service = getCloudServiceToCreate("testExternalCreatedServiceRefresh", "elephantsql", "turtle");
+		CloudService service = getCloudServiceToCreate("testExternalCreatedServiceRefresh", SERVICE_LABEL, SERVICE_PLAN);
 
 		client.createService(service);
 
@@ -286,22 +288,22 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 		List<CloudService> eventServices = cloudEvent.getServices();
 		assertTrue("Expected 1 service in cloud refresh event", eventServices.size() == 1);
 		assertEquals("testExternalCreatedServiceRefresh", eventServices.get(0).getName());
-		assertEquals("elephantsql", eventServices.get(0).getLabel());
-		assertEquals("turtle", eventServices.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, eventServices.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, eventServices.get(0).getPlan());
 	}
 
 	public void testExternalCreatedServiceBehaviour() throws Exception {
 		CloudFoundryOperations client = harness.createExternalClient();
 		client.login();
-		CloudService service = getCloudServiceToCreate("testExternalCreatedServiceBehaviour", "elephantsql", "turtle");
+		CloudService service = getCloudServiceToCreate("testExternalCreatedServiceBehaviour", SERVICE_LABEL, SERVICE_PLAN);
 
 		client.createService(service);
 
 		List<CloudService> existingServices = serverBehavior.getServices(new NullProgressMonitor());
 		assertTrue("Expected 1 service", existingServices.size() == 1);
 		assertEquals("testExternalCreatedServiceBehaviour", existingServices.get(0).getName());
-		assertEquals("elephantsql", existingServices.get(0).getLabel());
-		assertEquals("turtle", existingServices.get(0).getPlan());
+		assertEquals(SERVICE_LABEL, existingServices.get(0).getLabel());
+		assertEquals(SERVICE_PLAN, existingServices.get(0).getPlan());
 	}
 
 	public void testNoService() throws Exception {
@@ -311,6 +313,6 @@ public class CloudFoundryServicesTest extends AbstractCloudFoundryServicesTest {
 	}
 
 	protected CloudService createDefaultService() throws Exception {
-		return createCloudService(SERVICE_NAME, "elephantsql", "turtle");
+		return createCloudService(SERVICE_NAME, SERVICE_LABEL, SERVICE_PLAN);
 	}
 }

@@ -71,7 +71,7 @@ public class CloudFoundryServerBehaviourTest extends AbstractCloudFoundryTest {
 
 		CloudFoundryOperations client = harness.createExternalClient();
 		client.login();
-		CloudService service = getCloudServiceToCreate("sqlService", "elephantsql", "turtle");
+		CloudService service = getCloudServiceToCreate("sqlService", "postgresql", "default");
 		List<CloudService> servicesToBind = new ArrayList<CloudService>();
 		servicesToBind.add(service);
 		client.createService(service);

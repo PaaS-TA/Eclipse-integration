@@ -18,7 +18,7 @@
 	<extension point="org.eclipse.wst.server.core.runtimeTypes">
 		<runtimeType id="org.cloudfoundry.appcloudserver.runtime.10"
 			version="1.0" 
-			name="Open PaaS 개발환경 v1.0.0-BETA" 
+			name="Open PaaS 개발환경 v1.0.0" 
 			description="%runtimeType.description"
 			vendor="Open PaaS" 
 			class="org.cloudfoundry.ide.eclipse.server.core.internal.CloudFoundryServerRuntime">

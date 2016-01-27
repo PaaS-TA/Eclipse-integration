@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/org.cloudfoundry.ide.eclipse.server_0.0.0.jar" id="org.cloudfoundry.ide.eclipse.server" version="0.0.0">
-      <category name="Core / Open PaaS 개발환경"/>
-   </feature>
-   <feature url="features/org.cloudfoundry.ide.eclipse.server.sdk_1.8.1.qualifier.jar" id="org.cloudfoundry.ide.eclipse.server.sdk" version="0.0.0">
+   <feature url="features/org.cloudfoundry.ide.eclipse.server.sdk_1.0.0.jar" id="org.cloudfoundry.ide.eclipse.server.sdk" version="1.0.0">
       <category name="Resources / Open PaaS 개발환경"/>
    </feature>
-   <feature url="features/org.cloudfoundry.ide.eclipse.server_1.0.0.beta.jar" id="org.cloudfoundry.ide.eclipse.server" version="1.0.0.beta">
+   <feature url="features/org.cloudfoundry.ide.eclipse.server_1.8.3.201506161740-RELEASE.jar" id="org.cloudfoundry.ide.eclipse.server" version="1.8.3.201506161740-RELEASE">
+      <category name="Core / Open PaaS 개발환경"/>
+   </feature>
+   <feature url="features/org.cloudfoundry.ide.eclipse.server_1.0.0.jar" id="org.cloudfoundry.ide.eclipse.server" version="1.0.0">
       <category name="Core / Open PaaS 개발환경"/>
    </feature>
    <category-def name="Core / Open PaaS 개발환경" label="Core / Open PaaS 개발환경"/>
